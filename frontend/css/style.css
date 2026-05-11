@@ -1,0 +1,380 @@
+/* RESET */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* BODY */
+body {
+    background: #050816;
+    color: white;
+    font-family: 'Orbitron', sans-serif;
+    overflow-x: hidden;
+}
+
+/*BACKGROUND EFFECT*/
+body::before {
+    content: '';
+    position: fixed;
+    width: 600px;
+    height: 600px;
+    background: rgba(0, 255, 255, 0.08) ;
+    border-radius: 50%;
+    top: -200px;
+    left: -200px;
+    filter: blur(120px);
+    z-index: -1;
+}
+
+body::after {
+    content: '';
+    position: fixed;
+    width: 500px;
+    height: 500px;
+    background: rgba(128, 0, 255, 0.08);
+    border-radius: 50%;
+    bottom: -200px;
+    right: -200px;
+    filter: blur(120px);
+    z-index: -1;
+}
+
+/* NAVBAR */
+.navbar {
+    width: 100%;
+    padding: 20px 60px;
+
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    
+    position: sticky;
+    top: 0;
+
+    backdrop-filter: blur(10px);
+
+    z-index: 1000;
+}
+
+/* LOGO */
+.logo-container {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+}
+
+.logo { 
+    /*width:65px;*/ /* dimensione originale del logo */
+    width: 40px;
+    height: 40px;
+}
+
+.logo-container h1 {
+    font-size: 1.8rem;
+    color: #00FFFF;
+    text-shadow: 0 0 10px #00ffff;
+}
+
+/* NAV LINKS */
+nav {
+    display: flex;
+    gap: 30px;  
+}
+nav a { 
+    color: white;
+    text-decoration: none;
+    transition: 0.3s;
+    font-weight: 500;
+}
+
+nav a:hover {
+    color: #00FFFF;
+    text-shadow: 0 0 10px #00ffff;
+}
+
+/* HERO SECTION */
+.hero {
+    min-height: 90vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    padding: 50px;
+}
+
+.hero-content h2 {
+    font-size: 5rem;
+    line-height: 1.1;
+    color: #00FFFF;
+    text-shadow: 
+        0 0 10px #00ffff,
+        0 0 20px #00ffff,
+        0 0 30px #00ffff;   
+}
+
+.hero-content p {
+    margin-top: 25px;
+    font-size: 1.2rem;
+    color: #cfcfcf;
+}
+
+/* BUTTON */
+.hero button {
+    margin-top: 35px;
+    padding: 15px 35px;
+    border: none;
+    border-radius: 12px;
+    background: linear-gradient(90deg, #00ffff, #8a2be2);
+    color: white;
+    font-weight: bold;
+    font-size: 1rem;
+    cursor: pointer;
+    transition: 0.3s;
+    box-shadow: 
+        0 0 15px #00ffff,
+        0 0 30px rgba(0, 255, 255, 0.5);
+}
+
+.hero button:hover {
+    transform: scale(1.08);
+}
+
+/* SECTION TITLES */
+.section-title {
+    font-size: 2.8rem;
+    text-align: center;
+    margin-bottom: 50px;
+    color: #00FFFF;
+    text-shadow: 0 0 10px #00ffff;
+}
+
+/* GAMES SECTION */
+.games-section {
+    padding: 100px 10%;
+}
+
+.games-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 30px;
+}
+
+/* GAME CARD */
+.game-card {
+    background: rgba(255, 255, 255, 0.05);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 20px;
+    padding: 35px;
+    text-align: center;
+    transition: 0.3s;
+    backdrop-filter: blur(10px);
+    box-shadow: 0 0 20px rgba(0, 255, 255, 0.08);
+}
+
+.game-card:hover {
+    transform: translateY(-10px);
+    box-shadow:
+        0 0 20px #00ffff,
+        0 0 40px rgba(0, 255, 255, 0.3);
+}
+
+/* ICON */
+.game-icon {
+    font-size: 3rem;
+    margin-bottom: 20px;
+}
+
+/* GAME TITLE */
+.game-card h3 {
+    font-size: 1.6rem;
+    margin-bottom: 15px;
+    color: #00FFFF;
+}
+
+/* TEXT */
+.game-card p {
+    color: #cccccc;
+    margin-bottom: 25px;
+    line-height: 1.5;
+}
+
+/* BUTTON */
+.game-card a {
+    text-decoration: none;
+    padding: 12px 25px;
+    border-radius: 10px;
+    background: linear-gradient(90deg, #00ffff, #8a2be2);
+    color: white;
+    font-weight: bold;
+    transition: 0.3s;
+}
+
+.game-card a:hover {
+    opacity: 0.8;
+}
+
+/* LEADERBOARD */
+.leaderboard-section {
+    padding: 100px 10%;
+}
+
+.leaderboard-container {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+/* LEADERBOARD CARD */
+.leaderboard-card {
+    background: rgba(255, 255, 255, 0.05);
+    border-radius: 15px;
+    display: flex;
+    align-items: center;
+    gap: 25px;
+    padding: 20px 30px;
+
+    backdrop-filter: blur(10px);
+}
+
+/* RANK */
+.rank { 
+    font-size: 2rem;
+    font-weight: bold;
+    color: #00FFFF;
+}
+
+/* PLAYER INFO */
+.player-info h3 {
+    margin-bottom: 5px;
+}
+
+.player-info p {
+    color: #cccccc;
+}
+
+/* ABOUT */
+.about-section {
+    padding: 100px 10%;
+    text-align: center;
+}
+
+.about-section p {
+    max-width: 800px;
+    margin: auto;
+    color: #cccccc;
+    line-height: 1.8;
+}
+
+/* FOOTER */
+footer {
+    text-align: center;
+    padding: 40px;
+    border-top: 1px solid rgba(255, 255, 255, 0.1);
+    color: #aaaaaa;
+}
+
+/* REGISTER BUTTON NAVBAR */
+.register-btn {
+    padding: 10px 18px;
+    border-radius: 10px;
+    background: linear-gradient(90deg, #00ffff, #8a2be2);
+    color: white;
+    box-shadow: 0 0 12px rgba(0, 255, 255, 0.6);
+}
+
+.register-btn:hover {
+    color: white;
+    transform: scale(1.05);
+}
+
+
+/* AUTH PAGES */
+.auth-section {
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 40px 20px;
+}
+
+.auth-card {
+    width: 100%;
+    max-width: 420px;
+    padding: 40px;
+    border-radius: 22px;
+    background: rgba(255, 255, 255, 0.06);
+    border: 1px solid rgba(255, 255, 255, 0.12);
+    backdrop-filter: blur(12px);
+    box-shadow: 0 0 25px rgba(0, 255, 255, 0.18);
+    text-align: center;
+}
+
+.auth-card h2 {
+    margin-bottom: 30px;
+    color: #00ffff;
+    font-size: 2rem;
+    text-shadow: 0 0 12px #00ffff;
+}
+
+.auth-card form {
+    display: flex;
+    flex-direction: column;
+    gap: 18px;
+}
+
+.auth-card input {
+    padding: 15px;
+    border-radius: 12px;
+    border: 1px solid rgba(0, 255, 255, 0.4);
+    background: rgba(0, 0, 0, 0.35);
+    color: white;
+    outline: none;
+    font-family: 'Orbitron', sans-serif;
+}
+
+.auth-card input::placeholder {
+    color: #aaaaaa;
+}
+
+.auth-card input:focus {
+    border-color: #00ffff;
+    box-shadow: 0 0 12px rgba(0, 255, 255, 0.5);
+}
+
+.auth-card button {
+    margin-top: 10px;
+    padding: 15px;
+    border: none;
+    border-radius: 12px;
+    background: linear-gradient(90deg, #00ffff, #8a2be2);
+    color: white;
+    font-weight: bold;
+    cursor: pointer;
+    font-family: 'Orbitron', sans-serif;
+    box-shadow: 0 0 15px rgba(0, 255, 255, 0.5);
+    transition: 0.3s;
+}
+
+.auth-card button:hover {
+    transform: scale(1.05);
+}
+
+.auth-card p {
+    margin-top: 25px;
+    color: #cccccc;
+}
+
+.auth-card a {
+    color: #00ffff;
+    text-decoration: none;
+}
+
+.auth-card a:hover {
+    text-shadow: 0 0 10px #00ffff;
+}
+
+.back-home {
+    display: inline-block;
+    margin-top: 25px;
+}

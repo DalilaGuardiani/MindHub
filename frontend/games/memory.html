@@ -2,14 +2,40 @@
 <html lang="it">
 <head>
   <meta charset="UTF-8">
-  <title>Memory</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Memory - MindHub</title>
+
+  <link rel="stylesheet" href="../css/style.css">
+  <link rel="stylesheet" href="../css/memory.css">
+  <link rel="stylesheet" href="../css/responsive.css">
 </head>
-<body style="background:black; color:white; text-align:center;">
 
-  <h1>Memory</h1>
-  <p>Qui andrà il gioco</p>
+<body>
 
-  <a href="../index.html">Torna alla home</a>
+  <section class="memory-section">
 
+    <h1>Memory</h1>
+
+    <div class="memory-info">
+      <div class="info-box">
+        Mosse: <span id="moves">0</span>
+      </div>
+
+      <div class="info-box">
+        Coppie trovate: <span id="matches">0</span>/6
+      </div>
+    </div>
+
+    <div id="memory-grid" class="memory-grid"></div>
+
+    <p id="win-message" class="win-message"></p>
+
+    <button id="restart-btn">Ricomincia</button>
+
+    <a href="../index.html" class="back-home">← Torna alla home</a>
+
+  </section>
+
+  <script src="../js/memory.js"></script>
 </body>
 </html>

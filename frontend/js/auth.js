@@ -12,7 +12,9 @@ if (loginForm) {
 
         console.log("Risposta login:", result);
 
-        alert(result.message || "Login inviato al backend");
+        /*alert(result.message || "Login inviato al backend");*/
+        localStorage.setItem("mindhubUser", email);
+        window.location.href = "../index.html";
     });
 }
 
@@ -34,6 +36,8 @@ if (registerForm) {
 
         console.log("Risposta registrazione:", result);
 
-        alert(result.message || "Registrazione inviata al backend");
+        /*alert(result.message || "Registrazione inviata al backend");*/
+        localStorage.setItem("mindhubUser", username);
+        window.location.href = "../index.html";
     });
 }

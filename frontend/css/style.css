@@ -84,6 +84,7 @@ body::after {
 nav {
     display: flex;
     gap: 30px;  
+    align-items: center;
 }
 nav a { 
     color: white;
@@ -95,6 +96,50 @@ nav a {
 nav a:hover {
     color: #00FFFF;
     text-shadow: 0 0 10px #00ffff;
+}
+
+/* USER MENU */
+
+#auth-links {
+    display: flex;
+    gap: 30px;
+    align-items: center;
+}
+
+.user-menu {
+    display: flex;
+    align-items: center;
+}
+
+.user-menu a {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    color: white;
+    text-decoration: none;
+    line-height: 1;
+}
+
+.user-menu a:hover {
+    color: #00ffff;
+    text-shadow: 0 0 10px #00ffff;
+}
+
+#navbar-username{
+    display: inline-flex;
+    align-items: center;
+}
+.profile-icon {
+    display: inline-flex;
+    align-items: center;
+    font-size: 1.2rem;
+}
+
+/* deve stare DOPO #auth-links e .user-menu */
+.hidden,
+#auth-links.hidden,
+.user-menu.hidden {
+    display: none;
 }
 
 /* HERO SECTION */

@@ -344,20 +344,25 @@ Grid Bootstrap + CSS custom
 .win-buttons {
     display: flex;
     gap: 15px ;
+    width: 100%;
     margin-top: 25px;
 }
 
 /* STILE BOTTONI VINCITA */
 .win-buttons button,
 .win-buttons a {
-    flex: 1;
-    min-height: 48px;
-    padding: 12px 16px;
+    flex: 1 1 0; /* i bottoni occupano tutto lo spazio disponibile, diviso equamente */
+    min-height: 58px;
+    padding: 0px 18px;
+    margin: 0;
+
     display: flex;
     justify-content: center;
     align-items: center;
+
     border: none;
     border-radius: 12px;
+
     background: linear-gradient(90deg, #00ffff, #8a2be2);
     color: white;
     font-weight: bold;
@@ -367,6 +372,10 @@ Grid Bootstrap + CSS custom
     font-family: 'Orbitron', sans-serif;
     box-shadow: 0 0 15px rgba(0, 255, 255, 0.5);
     transition: 0.3s;
+
+    appearance: none;
+    -webkit-appearance: none;
+    box-sizing: border-box;
 }
 .win-buttons a{
     display: flex;
@@ -374,7 +383,7 @@ Grid Bootstrap + CSS custom
     align-items: center;
 }
 .win-buttons button:hover,
-.home-btn:hover {
+.win-buttons a:hover {
     transform: scale(1.05);
     color: white;
 }
@@ -431,6 +440,16 @@ Grid Bootstrap + CSS custom
 
     .sudoku-panel {
         margin-top: 25px;
+    }
+
+    .win-buttons {
+        flex-direction: column;
+    }
+
+    .win-buttons button,
+    .win-buttons a {
+        width: 100%;
+        height: 52px;
     }
 }
 

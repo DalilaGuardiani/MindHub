@@ -6,6 +6,11 @@ const pvpBtn = document.getElementById("pvp-btn");
 const cpuBtn = document.getElementById("cpu-btn");
 const resetBtn = document.getElementById("reset-btn");
 
+const resultOverlay = document.getElementById("result-overlay");
+const resultTitle = document.getElementById("result-title");
+const resultText = document.getElementById("result-text");
+const playAgainBtn = document.getElementById("play-again-btn");
+
 let board = ["", "", "", "", "", "", "", "", ""];
 let currentPlayer = "X";
 let gameActive = false;
@@ -59,13 +64,19 @@ function handleCellClick() {
   makeMove(index, currentPlayer);
 
   if (checkWinner(currentPlayer)) {
-    statusText.textContent = `Ha vinto ${currentPlayer}!`;
+    showResult(
+      `${currentPlayer} ha vinto!`,
+      "Complimenti!"
+    );
     gameActive = false;
     return;
   }
 
   if (checkDraw()) {
-    statusText.textContent = "Pareggio!";
+    showResult(
+      "Pareggio!",
+      "Nessun giocatore ha vinto."
+    );
     gameActive = false;
     return;
   }
@@ -106,13 +117,21 @@ function cpuMove() {
   makeMove(randomIndex, "O");
 
   if (checkWinner("O")) {
-    statusText.textContent = "Ha vinto la CPU!";
+    showResult(
+      "La CPU ha vinto!",
+      "Riprova ancora."
+    );
+
     gameActive = false;
     return;
   }
 
   if (checkDraw()) {
-    statusText.textContent = "Pareggio!";
+    showResult(
+      "Pareggio!",
+      "Nessun giocatore ha vinto."
+    );
+
     gameActive = false;
     return;
   }
@@ -145,3 +164,18 @@ function resetGame() {
 
   startGame(gameMode);
 }
+
+function showResult(title, text) {
+
+  resultTitle.textContent = title;
+  resultText.textContent = text;
+
+  resultOverlay.classList.add("show");
+}
+
+playAgainBtn.addEventListener("click", () => {
+
+  resultOverlay.classList.remove("show");
+
+  startGame(gameMode);
+});

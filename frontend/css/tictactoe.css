@@ -178,3 +178,87 @@
 .mode-card .mode-selection button {
     width: 100%;
 }
+
+/* RESULT OVERLAY */
+
+.result-overlay {
+    position: fixed;
+    inset: 0;
+
+    display: none;
+    justify-content: center;
+    align-items: center;
+
+    background: rgba(5, 8, 22, 0.78);
+    backdrop-filter: blur(8px);
+
+    z-index: 9999;
+}
+
+.result-overlay.show {
+    display: flex;
+}
+
+.result-card {
+    max-width: 420px;
+}
+
+.result-card h2 {
+    color: #00ffff;
+    text-shadow: 0 0 15px #00ffff;
+    margin-bottom: 15px;
+}
+
+.result-card p {
+    color: #cccccc;
+    margin-bottom: 25px;
+}
+
+.result-buttons {
+    display: flex;
+    gap: 15px;
+    width: 100%;
+}
+
+.result-buttons button,
+.result-buttons a {
+
+    flex: 1 1 0;
+
+    min-height: 58px;
+    padding: 0px 18px;
+    margin: 0;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    border: none;
+    border-radius: 12px;
+
+    background: linear-gradient(90deg, #00ffff, #8a2be2);
+
+    color: white;
+    font-weight: bold;
+    text-decoration: none;
+    text-align: center;
+
+    cursor: pointer;
+    font-family: 'Orbitron', sans-serif;
+    font-size: 0.95rem;
+    line-height: 1;
+
+    box-shadow: 0 0 15px rgba(0, 255, 255, 0.5);
+
+    transition: 0.3s;
+
+    appearance: none;
+    -webkit-appearance: none;
+    box-sizing: border-box;
+}
+
+.result-buttons button:hover,
+.result-buttons a:hover {
+    transform: scale(1.05);
+    color: white;
+}

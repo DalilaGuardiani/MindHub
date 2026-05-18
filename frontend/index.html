@@ -20,7 +20,8 @@
         <header class="navbar">
             <div class="logo-container">
                 <img src="assets/logo.png" alt="MindHub Logo" class="logo">
-                <h1>MindHub</h1>
+                <h1>Mind<span class="purple-text">Hub</span>
+</h1>
             </div>
             <nav>
                 <a href="#games">Games</a>
@@ -36,7 +37,7 @@
             <div class="hero-content">
                 <h2>
                     PLAY.<br>
-                    IMPROVE.<br>
+                    <span class="purple-text">IMPROVE.</span><br>
                     COMPETE.
                 </h2>
                 <p> <!-- piccola descrizione del progetto -->
@@ -98,30 +99,8 @@
         <section class="leaderboard-section" id="leaderboard">
             <h2 class="section-title">Leaderboard</h2>
             
-            <div class="leaderboard-container">
-                <div class="leaderboard-card">
-                    <span class="rank">#1</span>
-                    <div class="player-info">
-                        <h3>PlayerOne</h3>
-                        <p>2450 points</p>
-                    </div>
-                </div>
-
-                <div class="leaderboard-card">
-                    <span class="rank">#2</span>
-                    <div class="player-info">
-                        <h3>CyberMind</h3>
-                        <p>1980 points</p>
-                    </div>
-                </div>
-                
-                <div class="leaderboard-card">
-                    <span class="rank">#3</span>
-                    <div class="player-info">
-                        <h3>MazeRunner</h3>
-                        <p>1750 points</p>
-                    </div>
-                </div>
+            <div class="leaderboard-container" id="leaderboard-container">
+                <!-- La leaderboard verrà generata con JavaScript -->
             </div>
         </section>
         
@@ -140,6 +119,7 @@
         </footer>
         
         <script src="js/main.js"></script>
+        <script src="js/leaderboard.js"></script>
     </body>
 </html>
 

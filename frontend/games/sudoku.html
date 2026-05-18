@@ -63,7 +63,80 @@
     </div>
 
   </main>
+  <!DOCTYPE html>
+<html lang="it">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Sudoku - MindHub</title>
 
+  <!-- Bootstrap -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+
+  <!-- CSS nostri -->
+  <link rel="stylesheet" href="../css/style.css">
+  <link rel="stylesheet" href="../css/sudoku.css">
+  <link rel="stylesheet" href="../css/responsive.css">
+</head>
+
+<body class="game-page">
+
+  <main class="sudoku-section container-fluid">
+
+    <div class="text-center mb-3">
+      <h1>Sudoku</h1>
+    </div>
+
+    <div class="sudoku-layout row justify-content-center align-items-center">
+
+      <div class="col-12 col-lg-7 d-flex justify-content-center">
+        <div id="sudoku-board" class="sudoku-board"></div>
+      </div>
+
+      <div class="col-12 col-lg-4 mt-4 mt-lg-0">
+        <div class="sudoku-panel">
+
+          <h2>Controls</h2>
+
+          <div class="number-pad d-grid gap-2">
+            <button class="number-btn" data-number="1">1</button>
+            <button class="number-btn" data-number="2">2</button>
+            <button class="number-btn" data-number="3">3</button>
+            <button class="number-btn" data-number="4">4</button>
+            <button class="number-btn" data-number="5">5</button>
+            <button class="number-btn" data-number="6">6</button>
+            <button class="number-btn" data-number="7">7</button>
+            <button class="number-btn" data-number="8">8</button>
+            <button class="number-btn" data-number="9">9</button>
+          </div>
+
+          <div class="d-flex gap-2 mt-4">
+            <button id="check-btn" class="sudoku-action-btn flex-fill">Check</button>
+            <button id="reset-btn" class="sudoku-action-btn flex-fill">Reset</button>
+          </div>
+
+          <p id="sudoku-message" class="sudoku-message mt-3"></p>
+
+          <a href="../index.html" class="back-home d-inline-block mt-3">
+            ← Torna alla home
+          </a>
+
+        </div>
+      </div>
+
+    </div>
+
+  </main>
+  <div id="win-overlay" class="win-overlay">
+    <div class="auth-card win-card">
+      <h2>Hai vinto!</h2>
+      <p>Complimenti, hai completato il Sudoku.</p>
+      <div class="win-buttons">
+        <button id="new-game-btn">Nuova partita</button>
+        <a href="../index.html" class="home-btn">Torna alla home</a>
+      </div>
+    </div>
+  </div>
   <script src="../js/sudoku.js"></script>
 </body>
 </html>

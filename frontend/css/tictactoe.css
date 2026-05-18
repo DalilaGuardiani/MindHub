@@ -1,0 +1,180 @@
+/* TIC TAC TOE PAGE */
+
+.tictactoe-section {
+    min-height: 100vh; /* Assicura che la sezione occupi almeno tutta l'altezza della viewport */
+    padding: 12px 20px;
+    overflow: hidden;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+
+    text-align: center;
+}
+
+.tictactoe-section h1 {
+    font-size: clamp(2rem, 5vw, 3rem);
+    color: #00ffff;
+    text-shadow: 0 0 15px #00ffff; /* Effetto glow */
+    margin-bottom: 12px;
+}
+#game-status {
+    min-height: 22px; /* Per evitare che il layout si sposti quando il testo cambia */
+    color: #cccccc;
+    margin-bottom: 12px;
+}
+/* MODE BUTTONS */
+
+.mode-selection {
+    display: flex;
+    gap: 15px;
+    margin-bottom: 20px;
+}
+
+/* Stile dei bottoni di selezione modalità e reset */
+.mode-selection button,
+.reset-btn {
+    padding: 13px 24px;
+    border: none;
+    border-radius: 12px;
+
+    background: linear-gradient(90deg, #00ffff, #8a2be2);
+    color: white;
+
+    font-weight: bold;
+    cursor: pointer;
+
+    font-family: 'Orbitron', sans-serif;
+
+    box-shadow: 0 0 15px rgba(0, 255, 255, 0.45);
+    transition: 0.3s;
+}
+
+.mode-selection button:hover,
+.reset-btn:hover {
+    transform: scale(1.05); /* Leggera animazione al passaggio del mouse */
+}
+
+/* STATUS */
+
+#game-status {
+    min-height: 25px; 
+    color: #cccccc;
+    margin-bottom: 20px;
+}
+
+/* BOARD */
+
+.board {
+    display: grid;
+    grid-template-columns: repeat(3, min(24vw, 105px));
+    grid-template-rows: repeat(3, min(24vw, 105px));
+    gap: clamp(8px, 2vw, 12px);
+
+    padding: clamp(10px, 2vw, 16px);
+    border-radius: 22px;
+
+    background: rgba(255, 255, 255, 0.05);
+    border: 1px solid rgba(0, 255, 255, 0.25);
+
+    backdrop-filter: blur(10px);
+
+    box-shadow:
+        0 0 25px rgba(0, 255, 255, 0.18),
+        0 0 45px rgba(138, 43, 226, 0.15);
+}
+
+/* CELLS */
+
+.cell {
+    width: min(24vw, 105px);
+    height: min(24vw, 105px);
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    border-radius: 18px;
+
+    background: rgba(255, 255, 255, 0.07);
+    border: 1px solid rgba(255, 255, 255, 0.12);
+
+    color: white;
+    font-size: clamp(2rem, 8vw, 3rem);
+    font-weight: bold;
+
+    cursor: pointer;
+
+    transition: 0.25s;
+}
+
+.cell:hover {
+    transform: scale(1.05);
+    border-color: #00ffff;
+    box-shadow: 0 0 15px rgba(0, 255, 255, 0.45);
+}
+
+.cell.x {
+    color: #00ffff;
+    text-shadow: 0 0 15px #00ffff;
+}
+
+.cell.o {
+    color: #8a2be2;
+    text-shadow: 0 0 15px #8a2be2;
+}
+
+/* ACTIONS */
+
+.reset-btn {
+    margin-top: 14px;
+}
+
+.back-home {
+    margin-top: 10px;
+}
+/* MODE OVERLAY */
+
+.mode-overlay {
+    position: fixed;
+    inset: 0;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    background: rgba(5, 8, 22, 0.75);
+    backdrop-filter: blur(8px);
+
+    z-index: 9999;
+}
+
+.mode-overlay.hidden {
+    display: none;
+}
+
+.mode-card {
+    max-width: 430px;
+}
+
+.mode-card h2 {
+    color: #00ffff;
+    text-shadow: 0 0 15px #00ffff;
+    margin-bottom: 15px;
+}
+
+.mode-card p {
+    color: #cccccc;
+    margin-bottom: 25px;
+}
+
+.mode-card .mode-selection {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+.mode-card .mode-selection button {
+    width: 100%;
+}

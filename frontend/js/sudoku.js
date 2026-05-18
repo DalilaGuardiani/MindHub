@@ -1,34 +1,106 @@
-// Griglia iniziale: 0 significa cella vuota
-const initialBoard = [
-    [5, 3, 0, 0, 7, 0, 0, 0, 0],
-    [6, 0, 0, 1, 9, 5, 0, 0, 0],
-    [0, 9, 8, 0, 0, 0, 0, 6, 0],
-    [8, 0, 0, 0, 6, 0, 0, 0, 3],
-    [4, 0, 0, 8, 0, 3, 0, 0, 1],
-    [7, 0, 0, 0, 2, 0, 0, 0, 6],
-    [0, 6, 0, 0, 0, 0, 2, 8, 0],
-    [0, 0, 0, 4, 1, 9, 0, 0, 5],
-    [0, 0, 0, 0, 8, 0, 0, 7, 9]
+const sudokuGames = [
+
+  {
+    puzzle: [
+      [5, 3, 0, 0, 7, 0, 0, 0, 0],
+      [6, 0, 0, 1, 9, 5, 0, 0, 0],
+      [0, 9, 8, 0, 0, 0, 0, 6, 0],
+      [8, 0, 0, 0, 6, 0, 0, 0, 3],
+      [4, 0, 0, 8, 0, 3, 0, 0, 1],
+      [7, 0, 0, 0, 2, 0, 0, 0, 6],
+      [0, 6, 0, 0, 0, 0, 2, 8, 0],
+      [0, 0, 0, 4, 1, 9, 0, 0, 5],
+      [0, 0, 0, 0, 8, 0, 0, 7, 9]
+    ],
+
+    solution: [
+      [5, 3, 4, 6, 7, 8, 9, 1, 2],
+      [6, 7, 2, 1, 9, 5, 3, 4, 8],
+      [1, 9, 8, 3, 4, 2, 5, 6, 7],
+      [8, 5, 9, 7, 6, 1, 4, 2, 3],
+      [4, 2, 6, 8, 5, 3, 7, 9, 1],
+      [7, 1, 3, 9, 2, 4, 8, 5, 6],
+      [9, 6, 1, 5, 3, 7, 2, 8, 4],
+      [2, 8, 7, 4, 1, 9, 6, 3, 5],
+      [3, 4, 5, 2, 8, 6, 1, 7, 9]
+    ]
+  },
+
+  {
+    puzzle: [
+      [0, 0, 0, 2, 6, 0, 7, 0, 1],
+      [6, 8, 0, 0, 7, 0, 0, 9, 0],
+      [1, 9, 0, 0, 0, 4, 5, 0, 0],
+      [8, 2, 0, 1, 0, 0, 0, 4, 0],
+      [0, 0, 4, 6, 0, 2, 9, 0, 0],
+      [0, 5, 0, 0, 0, 3, 0, 2, 8],
+      [0, 0, 9, 3, 0, 0, 0, 7, 4],
+      [0, 4, 0, 0, 5, 0, 0, 3, 6],
+      [7, 0, 3, 0, 1, 8, 0, 0, 0]
+    ],
+
+    solution: [
+      [4, 3, 5, 2, 6, 9, 7, 8, 1],
+      [6, 8, 2, 5, 7, 1, 4, 9, 3],
+      [1, 9, 7, 8, 3, 4, 5, 6, 2],
+      [8, 2, 6, 1, 9, 5, 3, 4, 7],
+      [3, 7, 4, 6, 8, 2, 9, 1, 5],
+      [9, 5, 1, 7, 4, 3, 6, 2, 8],
+      [5, 1, 9, 3, 2, 6, 8, 7, 4],
+      [2, 4, 8, 9, 5, 7, 1, 3, 6],
+      [7, 6, 3, 4, 1, 8, 2, 5, 9]
+    ]
+  },
+
+  {
+    puzzle: [
+      [0, 2, 0, 6, 0, 8, 0, 0, 0],
+      [5, 8, 0, 0, 0, 9, 7, 0, 0],
+      [0, 0, 0, 0, 4, 0, 0, 0, 0],
+      [3, 7, 0, 0, 0, 0, 5, 0, 0],
+      [6, 0, 0, 0, 0, 0, 0, 0, 4],
+      [0, 0, 8, 0, 0, 0, 0, 1, 3],
+      [0, 0, 0, 0, 2, 0, 0, 0, 0],
+      [0, 0, 9, 8, 0, 0, 0, 3, 6],
+      [0, 0, 0, 3, 0, 6, 0, 9, 0]
+    ],
+
+    solution: [
+      [1, 2, 3, 6, 7, 8, 9, 4, 5],
+      [5, 8, 4, 2, 3, 9, 7, 6, 1],
+      [9, 6, 7, 1, 4, 5, 3, 2, 8],
+      [3, 7, 2, 4, 6, 1, 5, 8, 9],
+      [6, 9, 1, 5, 8, 3, 2, 7, 4],
+      [4, 5, 8, 7, 9, 2, 6, 1, 3],
+      [8, 3, 6, 9, 2, 4, 1, 5, 7],
+      [2, 1, 9, 8, 5, 7, 4, 3, 6],
+      [7, 4, 5, 3, 1, 6, 8, 9, 2]
+    ]
+  }
+
 ];
 
-// Soluzione corretta della griglia
-const solutionBoard = [
-    [5, 3, 4, 6, 7, 8, 9, 1, 2],
-    [6, 7, 2, 1, 9, 5, 3, 4, 8],
-    [1, 9, 8, 3, 4, 2, 5, 6, 7],
-    [8, 5, 9, 7, 6, 1, 4, 2, 3],
-    [4, 2, 6, 8, 5, 3, 7, 9, 1],
-    [7, 1, 3, 9, 2, 4, 8, 5, 6],
-    [9, 6, 1, 5, 3, 7, 2, 8, 4],
-    [2, 8, 7, 4, 1, 9, 6, 3, 5],
-    [3, 4, 5, 2, 8, 6, 1, 7, 9]
-];
+let initialBoard;
+let solutionBoard;
+function chooseRandomSudoku() {
+
+    const randomIndex =
+        Math.floor(Math.random() * sudokuGames.length);
+
+    initialBoard =
+        sudokuGames[randomIndex].puzzle;
+
+    solutionBoard =
+        sudokuGames[randomIndex].solution;
+}
 
 const boardElement = document.getElementById("sudoku-board");
 const numberButtons = document.querySelectorAll(".number-btn");
 const checkBtn = document.getElementById("check-btn");
 const resetBtn = document.getElementById("reset-btn");
 const message = document.getElementById("sudoku-message");
+const winOverlay = document.getElementById("win-overlay");
+const newGameBtn = document.getElementById("new-game-btn");
 
 let selectedCell = null;
 let currentBoard = [];
@@ -42,6 +114,7 @@ function copyBoard(board) {
 function createBoard() {
     boardElement.innerHTML = "";
     message.textContent = "";
+    selectedCell = null; //con il reset non rimane selezionata nessuna cella
 
     currentBoard = copyBoard(initialBoard);
 
@@ -92,8 +165,10 @@ function insertNumber(number) {
     const col = selectedCell.dataset.col;
 
     selectedCell.textContent = number;
+    selectedCell.classList.remove("error");
     currentBoard[row][col] = Number(number);
 }
+
 
 // Controlla se la griglia è corretta
 function checkSudoku() {
@@ -135,12 +210,17 @@ function checkSudoku() {
 
     message.textContent = "Complimenti! Sudoku completato!";
     message.style.color = "#00ffff";
+    winOverlay.style.display = "flex";
+    
 }
 
 // Reset della partita
 function resetSudoku() {
-    selectedCell = null;
+    currentBoard = copyBoard(initialBoard);
+
     createBoard();
+
+    message.textContent = "";
 }
 
 // Eventi bottoni numerici
@@ -150,9 +230,16 @@ numberButtons.forEach(button => {
     });
 });
 
+newGameBtn.addEventListener("click", () => {
+    chooseRandomSudoku();
+    createBoard();
+    winOverlay.style.display = "none";
+});
+
 // Eventi bottoni azione
 checkBtn.addEventListener("click", checkSudoku);
 resetBtn.addEventListener("click", resetSudoku);
 
 // Avvio gioco
+chooseRandomSudoku();
 createBoard();

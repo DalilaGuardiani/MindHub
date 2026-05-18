@@ -4,6 +4,10 @@
     padding: 0;
     box-sizing: border-box;
 }
+/*animazione fluida di scroll*/
+html {
+    scroll-behavior: smooth;
+}
 
 /* BODY */
 body {
@@ -136,7 +140,8 @@ nav a:hover {
         0 0 30px rgba(0, 255, 255, 0.5);
 }
 
-.hero button:hover {
+
+.hero button :hover {
     transform: scale(1.08);
 }
 

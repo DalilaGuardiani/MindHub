@@ -5,19 +5,17 @@
 /* Occupa tutta l'altezza dello schermo */
 .game-page {
     min-height: 100vh;
-    overflow-x: hidden;
+    overflow: hidden;
 }
 
 
 /* Sezione principale del gioco */
 .sudoku-section {
     min-height: 100vh;
-
+    padding: 10px 20px;
     display: flex;
     flex-direction: column;
     justify-content: center;
-
-    padding: clamp(10px, 2vw, 20px);
 
     overflow: hidden;
 }
@@ -71,14 +69,14 @@ La board è una griglia CSS 9x9
     display: grid;
 
     /* 9 colonne */
-    grid-template-columns: repeat(9, 45px);
+    grid-template-columns: repeat(9, min(4.8vw, 45px));
 
     /* 9 righe */
-    grid-template-rows: repeat(9, 45px);
+    grid-template-rows: repeat(9, min(4.8vw, 45px));
 
-    gap: 3px;
+    gap: 2px;
 
-    padding: 10px;
+    padding: 8px;
 
     border-radius: 20px;
 
@@ -101,17 +99,17 @@ La board è una griglia CSS 9x9
 
 .sudoku-cell {
 
-    width: 45px;
-    height: 45px;
+    width: min(4.8vw, 45px);
+    height: min(4.8vw, 45px);
 
     display: flex;
     justify-content: center;
     align-items: center;
 
-    font-size: 1.1rem;
+    font-size: clamp(0.75rem, 1.5vw, 1.05rem);
     font-weight: bold;
 
-    border-radius: 10px;
+    border-radius: 7px;
 
     cursor: pointer;
 
@@ -187,7 +185,7 @@ La board è una griglia CSS 9x9
 
     border-radius: 20px;
 
-    padding: 18px;
+    padding: 14px;
 
     backdrop-filter: blur(10px);
 
@@ -229,7 +227,7 @@ Grid Bootstrap + CSS custom
 
     border-radius: 12px;
 
-    padding: 10px;
+    padding: 8px;
 
     font-size: 1.1rem;
     font-weight: bold;
@@ -266,7 +264,7 @@ Grid Bootstrap + CSS custom
 
     border-radius: 12px;
 
-    padding: 10px;
+    padding: 8px;
 
     font-weight: bold;
 
@@ -319,6 +317,69 @@ Grid Bootstrap + CSS custom
     border: 2px solid #ff0055 !important;
     box-shadow: 0 0 15px rgba(255, 0, 85, 0.6) !important;
 }
+/*WIN OVERLAY */
+.win-overlay {
+    position: fixed;
+    inset: 0; /* occupa tutto lo schermo */
+
+    display: none; /* nascosto di default */
+    /* Flexbox per centrare il contenuto, funziona solo quando display diventa flex */
+    justify-content: center;
+    align-items: center;
+
+    background: rgba(5, 8, 22, 0.75);
+    backdrop-filter: blur(8px);
+
+    z-index: 9999; /* mette la finestra/popup sopra tutto il resto */
+}
+/*se vinco, mostro l'overlay*/
+.win-overlay.show {
+    display: flex;
+}
+/* larghezzza massima della card, per evitare che su schermi grandi diventi troppo larga */
+.win-card {
+    max-width: 420px;
+}
+/*CONTENITORE BOTTONI */
+.win-buttons {
+    display: flex;
+    gap: 15px ;
+    margin-top: 25px;
+}
+
+/* STILE BOTTONI VINCITA */
+.win-buttons button,
+.win-buttons a {
+    flex: 1;
+    min-height: 48px;
+    padding: 12px 16px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border: none;
+    border-radius: 12px;
+    background: linear-gradient(90deg, #00ffff, #8a2be2);
+    color: white;
+    font-weight: bold;
+    text-decoration: none;
+    text-align: center;
+    cursor: pointer;
+    font-family: 'Orbitron', sans-serif;
+    box-shadow: 0 0 15px rgba(0, 255, 255, 0.5);
+    transition: 0.3s;
+}
+.win-buttons a{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.win-buttons button:hover,
+.home-btn:hover {
+    transform: scale(1.05);
+    color: white;
+}
+
+
 /* =========================
    RESPONSIVE
 ========================= */
@@ -370,5 +431,16 @@ Grid Bootstrap + CSS custom
 
     .sudoku-panel {
         margin-top: 25px;
+    }
+}
+
+@media screen and (max-width: 480px) {
+    .win-buttons {
+        flex-direction: column;
+    }
+
+    .win-buttons button,
+    .win-buttons a {
+        width: 100%;
     }
 }

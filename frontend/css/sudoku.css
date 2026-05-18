@@ -1,0 +1,374 @@
+/* =========================
+   PAGINA GENERALE SUDOKU
+========================= */
+
+/* Occupa tutta l'altezza dello schermo */
+.game-page {
+    min-height: 100vh;
+    overflow-x: hidden;
+}
+
+
+/* Sezione principale del gioco */
+.sudoku-section {
+    min-height: 100vh;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+
+    padding: clamp(10px, 2vw, 20px);
+
+    overflow: hidden;
+}
+
+
+/* =========================
+   TITOLO
+========================= */
+
+.sudoku-section h1 {
+    font-size: 2rem;
+
+    color: #00ffff;
+
+    text-shadow:
+        0 0 10px #00ffff,
+        0 0 20px #00ffff;
+    margin-bottom: 5px;
+}
+
+
+/* Sottotitolo */
+.sudoku-subtitle {
+    color: #cccccc;
+    margin-top: 10px;
+}
+
+
+/* =========================
+   LAYOUT GENERALE
+========================= */
+
+/*
+Bootstrap già crea colonne responsive.
+Qui aggiungiamo solo spazio.
+*/
+.sudoku-layout {
+    margin-top: 5px;
+}
+
+
+/* =========================
+   GRIGLIA SUDOKU
+========================= */
+
+/*
+La board è una griglia CSS 9x9
+*/
+.sudoku-board {
+
+    display: grid;
+
+    /* 9 colonne */
+    grid-template-columns: repeat(9, 45px);
+
+    /* 9 righe */
+    grid-template-rows: repeat(9, 45px);
+
+    gap: 3px;
+
+    padding: 10px;
+
+    border-radius: 20px;
+
+    background:
+        rgba(255,255,255,0.05);
+
+    border:
+        1px solid rgba(255,255,255,0.1);
+
+    backdrop-filter: blur(10px);
+
+    box-shadow:
+        0 0 20px rgba(0,255,255,0.15);
+}
+
+
+/* =========================
+   CELLE
+========================= */
+
+.sudoku-cell {
+
+    width: 45px;
+    height: 45px;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    font-size: 1.1rem;
+    font-weight: bold;
+
+    border-radius: 10px;
+
+    cursor: pointer;
+
+    transition: 0.2s;
+
+    background:
+        rgba(255,255,255,0.05);
+
+    border:
+        1px solid rgba(255,255,255,0.08);
+
+    color: white;
+}
+/* BORDI PIÙ SPESSI PER SEPARARE I BLOCCHI 3x3 */
+
+.sudoku-cell:nth-child(3n) {
+    border-right: 3px solid #00ffff;
+}
+
+.sudoku-cell:nth-child(n + 19):nth-child(-n + 27),
+.sudoku-cell:nth-child(n + 46):nth-child(-n + 54) {
+    border-bottom: 3px solid #00ffff;
+}
+
+
+/* Hover cella */
+.sudoku-cell:hover {
+
+    transform: scale(1.05);
+
+    border:
+        1px solid #00ffff;
+
+    box-shadow:
+        0 0 12px rgba(0,255,255,0.35);
+}
+
+
+/* Cella selezionata */
+.sudoku-cell.highlight {
+    background: rgba(138, 43, 226, 0.18);
+    border-color: rgba(138, 43, 226, 0.6);
+}
+
+.sudoku-cell.selected {
+    background: rgba(0, 255, 255, 0.22);
+    border: 1px solid #00ffff;
+    box-shadow: 0 0 15px rgba(0,255,255,0.5);
+}
+/* Celle iniziali del Sudoku */
+.sudoku-cell.fixed {
+
+    background:
+        rgba(138,43,226,0.15);
+
+    color: #00ffff;
+
+    cursor: default;
+}
+
+
+/* =========================
+   PANEL LATERALE
+========================= */
+
+.sudoku-panel {
+
+    background:
+        rgba(255,255,255,0.05);
+
+    border:
+        1px solid rgba(255,255,255,0.1);
+
+    border-radius: 20px;
+
+    padding: 18px;
+
+    backdrop-filter: blur(10px);
+
+    box-shadow:
+        0 0 20px rgba(138,43,226,0.15);
+}
+
+
+/* Titolo controls */
+.sudoku-panel h2 {
+
+    margin-bottom: 20px;
+
+    color: #00ffff;
+}
+
+
+/* =========================
+   TASTIERINO NUMERI
+========================= */
+
+/*
+Grid Bootstrap + CSS custom
+*/
+.number-pad {
+
+    display: grid;
+
+    grid-template-columns: repeat(3, 1fr);
+
+    gap: 10px;
+}
+
+
+/* Bottoni numeri */
+.number-btn {
+
+    border: none;
+
+    border-radius: 12px;
+
+    padding: 10px;
+
+    font-size: 1.1rem;
+    font-weight: bold;
+
+    background:
+        rgba(255,255,255,0.08);
+
+    color: white;
+
+    transition: 0.2s;
+}
+
+
+/* Hover */
+.number-btn:hover {
+
+    background:
+        linear-gradient(135deg, #00ffff, #8a2be2);
+
+    transform: scale(1.05);
+
+    box-shadow:
+        0 0 15px rgba(0,255,255,0.35);
+}
+
+
+/* =========================
+   BOTTONI CHECK/RESET
+========================= */
+
+.sudoku-action-btn {
+
+    border: none;
+
+    border-radius: 12px;
+
+    padding: 10px;
+
+    font-weight: bold;
+
+    color: white;
+
+    background:
+        linear-gradient(90deg, #00ffff, #8a2be2);
+
+    transition: 0.2s;
+}
+
+
+.sudoku-action-btn:hover {
+
+    transform: scale(1.04);
+
+    box-shadow:
+        0 0 15px rgba(0,255,255,0.35);
+}
+
+
+/* =========================
+   MESSAGGI
+========================= */
+
+.sudoku-message {
+
+    color: #00ffff;
+
+    min-height: 20px;
+}
+
+/* CELLE FISSE SOPRA I COLORI DEI BLOCCHI */
+.sudoku-cell.fixed {
+    color: #00ffff;
+    font-weight: bold;
+}
+
+
+/* CELLA SELEZIONATA*/
+.sudoku-cell.selected {
+    background: rgba(0, 255, 255, 0.28);
+    border: 2px solid #00ffff;
+    box-shadow: 0 0 18px rgba(0, 255, 255, 0.7);
+}
+
+/* CELLA checked errore */
+.sudoku-cell.error {
+    background: rgba(255, 0, 80, 0.25) !important;
+    border: 2px solid #ff0055 !important;
+    box-shadow: 0 0 15px rgba(255, 0, 85, 0.6) !important;
+}
+/* =========================
+   RESPONSIVE
+========================= */
+
+@media screen and (max-width: 768px) {
+
+    
+    .sudoku-board {
+
+        grid-template-columns: repeat(9, min(5.5vw, 45px));
+        grid-template-rows: repeat(9, min(5.5vw, 45px));
+
+        gap: 2px;
+        padding: 10px;
+        border-radius: 20px;
+        border: 3px solid #00ffff;
+        background:
+            rgba(255,255,255,0.05);
+        backdrop-filter: blur(10px);
+        box-shadow:
+            0 0 20px rgba(0,255,255,0.15);
+    }
+
+    .sudoku-cell {
+
+        width: min(5.5vw, 45px);
+        height: min(5.5vw, 45px);
+
+        display: flex;
+        justify-content: center;
+        align-items: center;
+
+        font-size: clamp(0.8rem, 2vw, 1.1rem);
+        font-weight: bold;
+
+        border-radius: 8px;
+        cursor: pointer;
+        transition: 0.2s;
+        background:
+            rgba(255,255,255,0.05);
+        border:
+            1px solid rgba(255,255,255,0.08);
+        color: white;
+    }
+
+    .sudoku-section h1 {
+        font-size: 2.2rem;
+    }
+
+    .sudoku-panel {
+        margin-top: 25px;
+    }
+}

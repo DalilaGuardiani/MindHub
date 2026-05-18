@@ -1,3 +1,4 @@
+/*Per le immagini svg ho usato tabler icone*/ 
 const cards = [
    "brain.svg", "brain.svg",
    "alien.svg", "alien.svg",
@@ -35,7 +36,14 @@ function createBoard() {
 
         card.classList.add("memory-card");
         card.dataset.symbol = symbol;
-        card.textContent = "?";
+        card.innerHTML = `
+            <div class="card-inner">
+                <div class="card-front">?</div>
+                <div class="card-back">
+                    <img src="../assets/memory/${symbol}" class="memory-icon">
+                </div>
+            </div>
+        `;
 
         card.addEventListener("click", flipCard);
 
@@ -48,7 +56,7 @@ function flipCard() {
     if (this === firstCard) return;
     if (this.classList.contains("matched")) return;
 
-    this.innerHTML = `<img src="../assets/memory/${this.dataset.symbol}" class="memory-icon">`;
+    
     this.classList.add("flipped");
 
     if (!firstCard) {
@@ -77,8 +85,6 @@ function checkMatch() {
         lockBoard = true;
 
         setTimeout(() => {
-            firstCard.innerHTML= "?";
-            secondCard.innerHTML = "?";
 
             firstCard.classList.remove("flipped");
             secondCard.classList.remove("flipped");

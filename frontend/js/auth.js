@@ -12,9 +12,14 @@ if (loginForm) {
 
         console.log("Risposta login:", result);
 
-        /*alert(result.message || "Login inviato al backend");*/
-        localStorage.setItem("mindhubUser", email);
+        const usernameFromEmail = email.split("@")[0];
+
+        localStorage.setItem("mindhubUser", usernameFromEmail);
+
         window.location.href = "../index.html";
+        //con il backend 
+        /*localStorage.setItem("mindhubUser", result.user.username);
+        window.location.href = "../index.html";*/ 
     });
 }
 

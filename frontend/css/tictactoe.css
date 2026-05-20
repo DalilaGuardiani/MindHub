@@ -262,3 +262,17 @@
     transform: scale(1.05);
     color: white;
 }
+
+/* RESPONSIVE */
+/* su schermi piccoli, impila i bottoni verticalmente e rendili più grandi per facilitare l'interazione touch */
+@media screen and (max-width: 480px) {
+    .result-buttons {
+        flex-direction: column;
+    }
+
+    .result-buttons button,
+    .result-buttons a {
+        width: 100%;
+        height: 52px;
+    }
+}

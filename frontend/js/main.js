@@ -16,7 +16,6 @@ function scrollToGames() {
     });
 }
 
-
 // NAVBAR LOGIN / USER
 
 const loggedUser = localStorage.getItem("mindhubUser");

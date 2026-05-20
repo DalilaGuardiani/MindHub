@@ -14,6 +14,10 @@ const matchesText = document.getElementById("matches");
 const winMessage = document.getElementById("win-message");
 const restartBtn = document.getElementById("restart-btn");
 
+const memoryWinOverlay = document.getElementById("memory-win-overlay");
+const memoryWinText = document.getElementById("memory-win-text");
+const memoryNewGameBtn = document.getElementById("memory-new-game-btn");
+
 let firstCard = null;
 let secondCard = null;
 let lockBoard = false;
@@ -103,6 +107,10 @@ function resetTurn() {
 function checkWin() {
     if (matches === 6) {
         winMessage.textContent = `Hai vinto in ${moves} mosse!`;
+
+        memoryWinText.textContent = `Hai completato il Memory in ${moves} mosse.`;
+
+        memoryWinOverlay.classList.add("show");
     }
 }
 
@@ -120,5 +128,9 @@ function restartGame() {
 }
 
 restartBtn.addEventListener("click", restartGame);
+memoryNewGameBtn.addEventListener("click", () => {
+    memoryWinOverlay.classList.remove("show");
 
+    restartGame();
+});
 createBoard();

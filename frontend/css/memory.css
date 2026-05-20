@@ -181,6 +181,91 @@
 .card-back {
     background: linear-gradient(135deg, #00ffff, #8a2be2);
 }
+/* MEMORY WIN OVERLAY */
+
+.memory-win-overlay {
+    position: fixed;
+    inset: 0;
+
+    display: none;
+    justify-content: center;
+    align-items: center;
+
+    background: rgba(5, 8, 22, 0.78);
+    backdrop-filter: blur(8px);
+
+    z-index: 9999;
+}
+
+.memory-win-overlay.show {
+    display: flex;
+}
+
+.memory-win-card {
+    max-width: 420px;
+}
+
+.memory-win-card h2 {
+    color: #00ffff;
+    text-shadow: 0 0 15px #00ffff;
+    margin-bottom: 15px;
+}
+
+.memory-win-card p {
+    color: #cccccc;
+    margin-bottom: 25px;
+}
+
+.memory-win-buttons {
+    display: flex;
+    gap: 15px;
+    width: 100%;
+    margin-top: 25px;
+}
+
+.memory-win-buttons button,
+.memory-win-buttons a {
+    flex: 1 1 0;
+    min-width: 0;
+
+    height: 58px;
+    padding: 0 18px;
+    margin: 0;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    border: none;
+    border-radius: 12px;
+
+    background: linear-gradient(90deg, #00ffff, #8a2be2);
+
+    color: white;
+    font-family: 'Orbitron', sans-serif;
+    font-size: 0.95rem;
+    font-weight: bold;
+    line-height: 1;
+
+    text-decoration: none;
+    text-align: center;
+
+    cursor: pointer;
+
+    box-shadow: 0 0 15px rgba(0, 255, 255, 0.5);
+
+    transition: 0.3s;
+
+    appearance: none;
+    -webkit-appearance: none;
+    box-sizing: border-box;
+}
+
+.memory-win-buttons button:hover,
+.memory-win-buttons a:hover {
+    transform: scale(1.05);
+    color: white;
+}
 
 /* MEMORY RESPONSIVE */
 
@@ -253,5 +338,16 @@
 
     .memory-section h1 {
         font-size: 1.7rem;
+    }
+}
+@media screen and (max-width: 480px) {
+    .memory-win-buttons {
+        flex-direction: column;
+    }
+
+    .memory-win-buttons button,
+    .memory-win-buttons a {
+        width: 100%;
+        height: 52px;
     }
 }

@@ -1,4 +1,7 @@
-const leaderboardData = [
+const leaderboardContainer = document.getElementById("leaderboard-container");
+
+// Dati di esempio da mostrare solo se non ci sono ancora punteggi salvati
+const defaultLeaderboardData = [
     {
         username: "PlayerOne",
         game: "Memory",
@@ -10,21 +13,35 @@ const leaderboardData = [
         score: 1980
     },
     {
-        username: "MazeRunner",
-        game: "Tic Tac Toe",
-        score: 1750
-    },
-    {
-        username: "NeonBrain",
-        game: "Memory",
-        score: 1420
+        username: "SnakePro",
+        game: "Snake",
+        score: 1200
     }
 ];
 
-const leaderboardContainer = document.getElementById("leaderboard-container");
+// Recupera i punteggi salvati nel localStorage
+function getSavedScores() {
+    return JSON.parse(localStorage.getItem("mindhubScores")) || [];
+}
 
+// Ordina i punteggi dal più alto al più basso
+function getLeaderboardData() {
+    const savedScores = getSavedScores();
+
+    if (savedScores.length === 0) {
+        return defaultLeaderboardData;
+    }
+
+    return savedScores
+        .sort((a, b) => b.score - a.score)
+        .slice(0, 5);
+}
+
+// Crea graficamente la leaderboard
 function loadLeaderboard() {
     leaderboardContainer.innerHTML = "";
+
+    const leaderboardData = getLeaderboardData();
 
     leaderboardData.forEach((player, index) => {
         const card = document.createElement("div");

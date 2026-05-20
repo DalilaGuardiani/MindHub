@@ -101,13 +101,42 @@ const resetBtn = document.getElementById("reset-btn");
 const message = document.getElementById("sudoku-message");
 const winOverlay = document.getElementById("win-overlay");
 const newGameBtn = document.getElementById("new-game-btn");
+const sudokuTime = document.getElementById("sudoku-time");
 
 let selectedCell = null;
 let currentBoard = [];
+let seconds = 0;
+let timerInterval = null;
+let timerStarted = false;
 
 // Copia la griglia iniziale
 function copyBoard(board) {
     return board.map(row => [...row]);
+}
+
+function startTimer() {
+    if (timerStarted) {
+        return;
+    }
+
+    timerStarted = true;
+
+    timerInterval = setInterval(() => {
+        seconds++;
+        sudokuTime.textContent = seconds;
+    }, 1000);
+}
+
+function stopTimer() {
+    clearInterval(timerInterval);
+    timerStarted = false;
+}
+
+function resetTimer() {
+    clearInterval(timerInterval);
+    seconds = 0;
+    timerStarted = false;
+    sudokuTime.textContent = seconds;
 }
 
 // Crea la griglia HTML
@@ -208,9 +237,13 @@ function checkSudoku() {
         return;
     }
 
+    const finalScore = 1000;
+
+    saveScore("Sudoku", finalScore);
+
     message.textContent = "Complimenti! Sudoku completato!";
     message.style.color = "#00ffff";
-    winOverlay.style.display = "flex";
+    winOverlay.classList.add("show");
     
 }
 
@@ -220,6 +253,9 @@ function resetSudoku() {
 
     createBoard();
 
+    resetTimer();
+    startTimer();
+    
     message.textContent = "";
 }
 
@@ -233,7 +269,9 @@ numberButtons.forEach(button => {
 newGameBtn.addEventListener("click", () => {
     chooseRandomSudoku();
     createBoard();
-    winOverlay.style.display = "none";
+    resetTimer();
+    startTimer();
+    winOverlay.classList.remove("show");
 });
 
 // Eventi bottoni azione
@@ -243,3 +281,4 @@ resetBtn.addEventListener("click", resetSudoku);
 // Avvio gioco
 chooseRandomSudoku();
 createBoard();
+startTimer();

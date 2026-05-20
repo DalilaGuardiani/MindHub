@@ -64,19 +64,34 @@ function handleCellClick() {
   makeMove(index, currentPlayer);
 
   if (checkWinner(currentPlayer)) {
+    let finalScore;
+
+    if (gameMode == "cpu") {
+      finalScore = 500;
+    }else {
+      finalScore = 300;
+    }
+
+    saveScore("Tic Tac Toe", finalScore);
+
     showResult(
       `${currentPlayer} ha vinto!`,
-      "Complimenti!"
+      `Complimenti! Score: ${finalScore}`
     );
+
     gameActive = false;
     return;
-  }
+    }
 
   if (checkDraw()) {
+    let finalScore = 0;
+
+    saveScore("Tic Tac Toe", finalScore);
     showResult(
       "Pareggio!",
       "Nessun giocatore ha vinto."
     );
+    
     gameActive = false;
     return;
   }
@@ -117,9 +132,13 @@ function cpuMove() {
   makeMove(randomIndex, "O");
 
   if (checkWinner("O")) {
+    const finalScore = -100;
+
+    saveScore("Tic Tac Toe", finalScore);
+
     showResult(
       "La CPU ha vinto!",
-      "Riprova ancora."
+      `Hai perso ${Math.abs(finalScore)} punti.`
     );
 
     gameActive = false;
@@ -127,6 +146,9 @@ function cpuMove() {
   }
 
   if (checkDraw()) {
+    const finalScore = 0;
+
+    saveScore("Tic Tac Toe", finalScore);
     showResult(
       "Pareggio!",
       "Nessun giocatore ha vinto."

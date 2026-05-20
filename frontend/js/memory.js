@@ -106,9 +106,11 @@ function resetTurn() {
 
 function checkWin() {
     if (matches === 6) {
-        winMessage.textContent = `Hai vinto in ${moves} mosse!`;
+        const finalScore = Math.max(1000 - moves * 10, 100);
 
-        memoryWinText.textContent = `Hai completato il Memory in ${moves} mosse.`;
+        saveScore("Memory", finalScore);
+
+        memoryWinText.textContent = `Hai completato il Memory in ${moves} mosse. Score: ${finalScore}`;
 
         memoryWinOverlay.classList.add("show");
     }

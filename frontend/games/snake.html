@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="it">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+        <title>Snake - MindHub</title>
+
+        <link rel="stylesheet" href="../css/style.css">
+        <link rel="stylesheet" href="../css/snake.css">
+        <link rel="stylesheet" href="../css/responsive.css">
+    </head>
+
+    <body class="game-page">
+
+        <main class="snake-section">
+
+            <h1>Snake</h1>
+
+            <div class="snake-info">
+                <div class="info-box">
+                    Score: <span id="score">0</span>
+                </div>
+
+                <div class="info-box">
+                    Best: <span id="best-score">0</span>
+                </div>
+            </div>
+
+            <div class="snake-layout">
+                <div id="snake-board" class="snake-board"></div>
+                <div class="snake-side-panel">
+
+                    <p id="snake-message" class="snake-message">
+                        Premi Start per iniziare
+                    </p>
+
+                    <div class="snake-actions">
+
+                        <button id="start-btn">Start</button>
+                        <button id="restart-btn">Restart</button>
+                    </div>
+
+                    <!-- CONTROLLI MOBILE -->
+                    <div class="mobile-controls">
+
+                        <button id="up-btn">↑</button>
+
+                        <div class="middle-controls">
+                            <button id="left-btn">←</button>
+                            <button id="down-btn">↓</button>
+                            <button id="right-btn">→</button>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+
+
+            <a href="../index.html" class="back-home">
+                ← Torna alla home
+            </a>
+
+        </main>
+
+        <div id="snake-gameover-overlay" class="snake-gameover-overlay">
+            <div class="auth-card snake-gameover-card">
+
+                <h2>Game Over</h2>
+                <p id="snake-gameover-text">Score: 0</p>
+
+                <div class="snake-gameover-buttons">
+                    <button id="snake-new-game-btn">Nuova partita</button>
+                    <a href="../index.html">Torna alla home</a>
+                </div>
+            </div>
+        </div>
+
+        <script src="../js/snake.js"></script>
+    </body>
+</html>

@@ -604,3 +604,61 @@ footer {
     display: inline-block;
     margin-top: 25px;
 }
+
+.guest-modal {
+    position: fixed;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.75);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 2000;
+    padding: 20px;
+}
+
+.guest-modal.hidden {
+    display: none;
+}
+
+.guest-modal-card {
+    max-width: 500px;
+}
+
+.guest-modal-card p {
+    color: #cfcfcf;
+    line-height: 1.6;
+    margin: 20px 0;
+}
+
+.guest-modal-buttons {
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+    margin-top: 20px;
+}
+
+.guest-modal-buttons a,
+.guest-modal-buttons button,
+.guest-close-btn {
+    text-decoration: none;
+    padding: 13px 22px;
+    border-radius: 12px;
+    border: none;
+    background: linear-gradient(90deg, #00ffff, #8a2be2);
+    color: white;
+    font-family: 'Orbitron', sans-serif;
+    font-weight: bold;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+.guest-modal-buttons a:hover,
+.guest-modal-buttons button:hover,
+.guest-close-btn:hover {
+    transform: scale(1.04);
+}
+
+.guest-close-btn {
+    margin-top: 18px;
+    background: rgba(255, 255, 255, 0.08);
+}

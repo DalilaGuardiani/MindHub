@@ -66,7 +66,7 @@
                     </div>
                     <h3>Memory</h3>
                     <p>Allenati con memoria e velocità.</p>
-                    <a href="games/memory.html">Play</a>
+                    <a href="games/memory.html" class="game-link">Play</a>
                 </div>
                 
                 <!-- SUDOKU -->
@@ -76,7 +76,7 @@
                     </div>
                     <h3>Sudoku</h3>
                     <p>Risolvi puzzle logici sempre nuovi.</p>
-                    <a href="games/sudoku.html">Play</a>
+                    <a href="games/sudoku.html" class="game-link">Play</a>
                 </div>
 
                 <!-- TIC TAC TOE -->
@@ -86,7 +86,7 @@
                     </div>
                     <h3>Tic Tac Toe</h3>
                     <p>Sfida il computer o un amico.</p>
-                    <a href="games/tictactoe.html">Play</a>
+                    <a href="games/tictactoe.html" class="game-link">Play</a>
                 </div>
 
                 <!-- SNAKE -->
@@ -96,7 +96,7 @@
                     </div>
                     <h3>Snake</h3>
                     <p>Guida il serpente, raccogli punti e non colpire i bordi.</p>
-                    <a href="games/snake.html">Play</a>
+                    <a href="games/snake.html" class="game-link">Play</a>
                 </div>
 
                 <!-- COMING SOON -->
@@ -147,7 +147,23 @@
         <footer>
             <p>© 2026 MindHub - All Rights Reserved</p>
         </footer>
-        
+        <div id="guest-modal" class="guest-modal hidden">
+            <div class="auth-card guest-modal-card">
+                <h2>Vuoi giocare?</h2>
+                <p>
+                    Per salvare i punteggi devi effettuare il login o registrarti.
+                    Puoi anche continuare come ospite, ma i tuoi risultati non verranno salvati.
+                </p>
+
+                <div class="guest-modal-buttons">
+                    <a href="pages/login.html">Login</a>
+                    <a href="pages/register.html">Registrati</a>
+                    <button id="continue-guest-btn">Continua come ospite</button>
+                </div>
+
+                <button id="close-guest-modal" class="guest-close-btn">Chiudi</button>
+            </div>
+        </div>
         <script src="js/main.js"></script>
         <script src="js/leaderboard.js"></script>
     </body>

@@ -11,6 +11,8 @@ if (loginForm) {
         const result = await loginUser(email, password);
 
         if (result.success) {
+            localStorage.removeItem("mindhubGuest");
+
             localStorage.setItem("mindhubUser", result.user.username);
             localStorage.setItem("mindhubUserId", result.user.id);
             localStorage.setItem("mindhubUserEmail", result.user.email);    
@@ -42,6 +44,8 @@ if (registerForm) {
         console.log("Risposta registrazione:", result);
 
         if (result.success) {
+            localStorage.removeItem("mindhubGuest");
+            
             localStorage.setItem("mindhubUser", result.user.username);
             localStorage.setItem("mindhubUserId", result.user.id);
             localStorage.setItem("mindhubUserEmail", result.user.email);

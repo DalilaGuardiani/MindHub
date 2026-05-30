@@ -14,6 +14,7 @@ const loggedUser = localStorage.getItem("mindhubUser");
 
 // Se non c'è nessun utente salvato, rimanda al login
 if (!loggedUser) {
+    alert("Devi essere loggato per accedere al profilo.");
     window.location.href = "login.html";
 }
 

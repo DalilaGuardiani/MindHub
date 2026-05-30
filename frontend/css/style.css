@@ -175,7 +175,8 @@ nav a:hover {
         0 0 14px rgba(124, 58, 237, 0.55);
 }
 /* BUTTON */
-.hero button {
+.hero-btn {
+    display: inline-block;
     margin-top: 35px;
     padding: 15px 35px;
     border: none;
@@ -185,6 +186,7 @@ nav a:hover {
     font-weight: bold;
     font-size: 1rem;
     cursor: pointer;
+    text-decoration: none;
     transition: 0.3s;
     box-shadow: 
         0 0 15px #00ffff,
@@ -192,7 +194,7 @@ nav a:hover {
 }
 
 
-.hero button :hover {
+.hero-btn:hover {
     transform: scale(1.08);
 }
 

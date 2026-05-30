@@ -237,7 +237,7 @@ function checkSudoku() {
         return;
     }
 
-    const finalScore = 1000;
+   const finalScore = Math.max(1000 - seconds, 100);
 
     saveScore("Sudoku", finalScore);
 
@@ -255,7 +255,7 @@ function resetSudoku() {
 
     resetTimer();
     startTimer();
-    
+
     message.textContent = "";
 }
 

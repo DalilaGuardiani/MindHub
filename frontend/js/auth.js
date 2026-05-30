@@ -10,16 +10,16 @@ if (loginForm) {
 
         const result = await loginUser(email, password);
 
-        console.log("Risposta login:", result);
+        if (result.success) {
+            localStorage.setItem("mindhubUser", result.user.username);
+            localStorage.setItem("mindhubUserId", result.user.id);
+            localStorage.setItem("mindhubUserEmail", result.user.email);    
 
-        const usernameFromEmail = email.split("@")[0];
-
-        localStorage.setItem("mindhubUser", usernameFromEmail);
-
-        window.location.href = "../index.html";
-        //con il backend 
-        /*localStorage.setItem("mindhubUser", result.user.username);
-        window.location.href = "../index.html";*/ 
+            window.location.href = "../index.html";
+        } else {
+            alert(result.message || "Errore durante il login.");
+        }
+        
     });
 }
 
@@ -41,8 +41,14 @@ if (registerForm) {
 
         console.log("Risposta registrazione:", result);
 
-        /*alert(result.message || "Registrazione inviata al backend");*/
-        localStorage.setItem("mindhubUser", username);
-        window.location.href = "../index.html";
+        if (result.success) {
+            localStorage.setItem("mindhubUser", result.user.username);
+            localStorage.setItem("mindhubUserId", result.user.id);
+            localStorage.setItem("mindhubUserEmail", result.user.email);
+
+            window.location.href = "../index.html";
+        } else {
+            alert(result.message || "Registrazione non riuscita");
+        }
     });
 }

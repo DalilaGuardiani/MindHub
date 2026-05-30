@@ -1,4 +1,4 @@
-const API_URL = "http://localhost:3000/api";
+const API_URL = "/api";
 
 async function apiRequest(endpoint, method = "GET", body = null) {
     try {
@@ -38,4 +38,24 @@ function registerUser(username, email, password) {
         email: email,
         password: password
     });
+}
+
+function getLeaderboard() {
+    return apiRequest("/leaderboard");
+}
+
+function saveScoreToBackend(userId, game, score) {
+    return apiRequest("/scores", "POST", {
+        userId: userId,
+        game: game,
+        score: score
+    });
+}
+
+function getUserProfile(userId) {
+    return apiRequest(`/users/${userId}`);
+}
+
+function getUserScores(userId) {
+    return apiRequest(`/users/${userId}/scores`);
 }

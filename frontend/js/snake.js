@@ -144,6 +144,8 @@ function endGame() {
 
     message.textContent = "Game Over!";
 
+    saveScore("Snake", score);
+    
     if (score > bestScore) {
         bestScore = score;
         localStorage.setItem("snakeBestScore", bestScore);

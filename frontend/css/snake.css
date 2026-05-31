@@ -209,91 +209,6 @@
     gap: 8px;
 }
 
-/* GAME OVER OVERLAY */
-.snake-gameover-overlay {
-    position: fixed;
-    inset: 0;
-
-    display: none;
-    justify-content: center;
-    align-items: center;
-
-    background: rgba(5, 8, 22, 0.78);
-    backdrop-filter: blur(8px);
-
-    z-index: 9999;
-}
-
-.snake-gameover-overlay.show {
-    display: flex;
-}
-
-.snake-gameover-card {
-    max-width: 420px;
-}
-
-.snake-gameover-card h2 {
-    color: #8a2be2;
-    text-shadow: 0 0 15px #8a2be2;
-    margin-bottom: 15px;
-}
-
-.snake-gameover-card p {
-    color: #cccccc;
-    margin-bottom: 25px;
-}
-
-.snake-gameover-buttons {
-    display: flex;
-    gap: 15px;
-    width: 100%;
-    margin-top: 25px;
-}
-
-.snake-gameover-buttons button,
-.snake-gameover-buttons a {
-    flex: 1 1 0;
-    min-width: 0;
-
-    height: 58px;
-    padding: 0 18px;
-    margin: 0;
-
-    display: flex;
-    justify-content: center;
-    align-items: center;
-
-    border: none;
-    border-radius: 12px;
-
-    background: linear-gradient(90deg, #00ffff, #8a2be2);
-
-    color: white;
-    font-family: 'Orbitron', sans-serif;
-    font-size: 0.95rem;
-    font-weight: bold;
-    line-height: 1;
-
-    text-decoration: none;
-    text-align: center;
-
-    cursor: pointer;
-
-    box-shadow: 0 0 15px rgba(0, 255, 255, 0.5);
-
-    transition: 0.3s;
-
-    appearance: none;
-    -webkit-appearance: none;
-    box-sizing: border-box;
-}
-
-.snake-gameover-buttons button:hover,
-.snake-gameover-buttons a:hover {
-    transform: scale(1.05);
-    color: white;
-}
-
 /* MOBILE */
 
 @media screen and (max-width: 768px) {
@@ -321,10 +236,6 @@
     .snake-cell {
         width: min(3.4vw, 21px);
         height: min(3.4vw, 21px);
-    }
-
-    .mobile-controls {
-        display: flex;
     }
 
     .snake-actions button {
@@ -375,13 +286,4 @@
         height: 48px;
     }
 
-    .snake-gameover-buttons {
-        flex-direction: column;
-    }
-
-    .snake-gameover-buttons button,
-    .snake-gameover-buttons a {
-        width: 100%;
-        height: 52px;
-    }
 }

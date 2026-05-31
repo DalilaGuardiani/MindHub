@@ -108,3 +108,16 @@
         font-size: 0.8rem;
     }
 }
+
+/*GAME POPUP RESPONSIVE */
+@media screen and (max-width: 480px) {
+    .game-popup-buttons {
+        flex-direction: column;
+    }
+
+    .game-popup-buttons button,
+    .game-popup-buttons a {
+        width: 100%;
+        height: 52px;
+    }
+}

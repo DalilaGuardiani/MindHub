@@ -59,3 +59,13 @@ function getUserProfile(userId) {
 function getUserScores(userId) {
     return apiRequest(`/users/${userId}/scores`);
 }
+
+function updateProfileImage(userId, profileImage) {
+    return apiRequest(`/users/${userId}/avatar`, "PUT", {
+        profileImage: profileImage
+    });
+}
+
+function deleteProfileImage(userId) {
+    return apiRequest(`/users/${userId}/avatar`, "DELETE");
+}

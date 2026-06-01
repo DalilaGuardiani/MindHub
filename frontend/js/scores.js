@@ -1,6 +1,17 @@
-// Recupera tutti i punteggi locali dell'utente loggato
-function getScores() {
-    return JSON.parse(localStorage.getItem("mindhubScores")) || [];
+// Recupera i punteggi dell'utente dal backend
+async function getScores() {
+    const userId = localStorage.getItem("mindhubUserId");
+    
+    if (!userId) {
+        return [];
+    }
+
+    if (typeof getUserScores === "function") {
+        const result = await getUserScores(userId);
+        return result.scores || [];
+    }
+    
+    return [];
 }
 
 // Salva un nuovo punteggio
@@ -15,20 +26,7 @@ async function saveScore(game, score) {
         return;
     }
 
-    const scores = getScores();
-
-    const newScore = {
-        username: username,
-        game: game,
-        score: score,
-        date: new Date().toISOString()
-    };
-
-    // Salvataggio locale per statistiche temporanee del frontend
-    scores.push(newScore);
-    localStorage.setItem("mindhubScores", JSON.stringify(scores));
-
-    // Salvataggio sul backend per classifica globale
+    // Salvataggio sul backend
     if (typeof saveScoreToBackend === "function") {
         const result = await saveScoreToBackend(userId, game, score);
 
@@ -39,12 +37,23 @@ async function saveScore(game, score) {
 }
 
 // Recupera il miglior punteggio di un gioco specifico
-function getBestScore(game) {
-    const scores = getScores().filter(score => score.game === game);
+async function getBestScore(game) {
+    const scores = await getScores();
+    const gameScores = scores.filter(score => score.game === game);
 
-    if (scores.length === 0) {
+    if (gameScores.length === 0) {
         return 0;
     }
 
-    return Math.max(...scores.map(score => Number(score.score)));
+    return Math.max(...gameScores.map(score => Number(score.score)));
+}
+
+// Recupera la somma totale dei punti di un gioco
+async function getTotalPointsForGame(gameName) {
+    const scores = await getScores();
+    const gameScores = scores.filter(score => score.game === gameName);
+
+    return gameScores.reduce((total, score) => {
+        return total + Number(score.score);
+    }, 0);
 }

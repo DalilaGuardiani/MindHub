@@ -40,7 +40,12 @@ function registerUser(username, email, password) {
     });
 }
 
-function getLeaderboard() {
+//aggiunta di un endpoint per ottenere la classifica, con possibilità di filtrare per gioco
+function getLeaderboard(game=null) {
+    if (game && game !== "All") {
+        return apiRequest(`/leaderboard/${game}`);
+    }
+
     return apiRequest("/leaderboard");
 }
 

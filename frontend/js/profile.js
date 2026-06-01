@@ -29,60 +29,59 @@ if (loggedUser && profileUsernameTitle) {
 
 // Per ora l'email non è disponibile perché non abbiamo ancora il backend
 if (profileEmail) {
-    profileEmail.textContent = "Not available";
+    profileEmail.textContent = localStorage.getItem("mindhubUserEmail") || "Email non disponibile";
 }
 
-// Recupera tutti i punteggi salvati
-const allScores = JSON.parse(localStorage.getItem("mindhubScores")) || [];
-
-// Prende solo i punteggi dell'utente loggato
-const userScores = allScores.filter(score => score.username === loggedUser);
-
-// Somma totale dei punti
-const totalPoints = userScores.reduce((total, score) => {
-    return total + Number(score.score);
-}, 0);
-
-if (profilePoints) {
-    profilePoints.textContent = totalPoints;
-}
-
-// Funzione per prendere il miglior punteggio di un gioco
-function getBestScore(gameName) {
-    const gameScores = userScores.filter(score => score.game === gameName);
-
-    if (gameScores.length === 0) {
-        return 0;
+// Carica i punteggi dell'utente dal backend
+async function loadUserScores() {
+    const userId = localStorage.getItem("mindhubUserId");
+    
+    if (!userId) {
+        console.warn("ID utente non trovato, impossibile caricare i punteggi.");
+        return;
     }
 
-    return Math.max(...gameScores.map(score => Number(score.score)));
-}
+    if (typeof getUserScores !== "function") {
+        console.error("Funzione getUserScores non disponibile");
+        return;
+    }
 
-// Funzione per sommare i punti di un gioco
-function getTotalPointsForGame(gameName) {
-    const gameScores = userScores.filter(score => score.game === gameName);
+    const result = await getUserScores(userId);
+    const userScores = result.scores || [];
 
-    return gameScores.reduce((total, score) => {
+    // Somma totale dei punti
+    const totalPoints = userScores.reduce((total, score) => {
         return total + Number(score.score);
     }, 0);
+
+    if (profilePoints) {
+        profilePoints.textContent = totalPoints;
+    }
+
+    // Aggiorna statistiche giochi usando le funzioni da scores.js
+    if (memoryBest && typeof getBestScore === "function") {
+        const memoryScore = await getBestScore("Memory");
+        memoryBest.textContent = memoryScore;
+    }
+
+    if (sudokuBest && typeof getBestScore === "function") {
+        const sudokuScore = await getBestScore("Sudoku");
+        sudokuBest.textContent = sudokuScore;
+    }
+
+    if (tictactoePoints && typeof getTotalPointsForGame === "function") {
+        const tictactoeTotal = await getTotalPointsForGame("Tic Tac Toe");
+        tictactoePoints.textContent = tictactoeTotal;
+    }
+
+    if (snakeBest && typeof getBestScore === "function") {
+        const snakeScore = await getBestScore("Snake");
+        snakeBest.textContent = snakeScore;
+    }
 }
 
-// Aggiorna statistiche giochi
-if (memoryBest) {
-    memoryBest.textContent = getBestScore("Memory");
-}
-
-if (sudokuBest) {
-    sudokuBest.textContent = getBestScore("Sudoku");
-}
-
-if (tictactoePoints) {
-    tictactoePoints.textContent = getTotalPointsForGame("Tic Tac Toe");
-}
-
-if (snakeBest) {
-    snakeBest.textContent = getBestScore("Snake");
-}
+// Carica i punteggi al caricamento della pagina
+loadUserScores();
 
 // Logout
 if (logoutBtn) {

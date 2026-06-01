@@ -1,6 +1,7 @@
 const leaderboardContainer = document.getElementById("leaderboard-container");
 const filterButtons = document.querySelectorAll(".filter-btn");
 
+/*
 // Dati di esempio mostrati solo se non ci sono ancora punteggi salvati
 const defaultLeaderboardData = [
     {
@@ -29,33 +30,43 @@ const defaultLeaderboardData = [
 function getSavedScores() {
     return JSON.parse(localStorage.getItem("mindhubScores")) || [];
 }
+*/
+
+const REFRESH_INTERVAL = 30000; // 30 secondi
+
 
 // Recupera i dati della leaderboard in base al filtro scelto
-function getLeaderboardData(selectedGame = "All") {
-    const savedScores = getSavedScores();
+async function getLeaderboardData(selectedGame = "All") {
 
-    let data;
+    try {
+        const response = await getLeaderboard(selectedGame);
+        let data= [];
 
-    if (savedScores.length === 0) {
-        data = defaultLeaderboardData;
-    } else {
-        data = savedScores;
-    }
-
+        if (response.success && response.leaderboard) {
+            data=response.leaderboard;
+        } else {
+            console.error("Errore nel recupero della leaderboard:", response.message);
+            return [];
+        }
     if (selectedGame !== "All") {
         data = data.filter(score => score.game === selectedGame);
     }
 
     return data
         .sort((a, b) => Number(b.score) - Number(a.score))
-        .slice(0, 5);
+        .slice(0, 5); // Prendi solo i primi 5 risultati
+
+    } catch (error) {
+        console.error("Errore nella richiesta API:", error);
+        return [];
+    }
 }
 
 // Crea graficamente la leaderboard
-function loadLeaderboard(selectedGame = "All") {
+async function loadLeaderboard(selectedGame = "All") {
     leaderboardContainer.innerHTML = "";
 
-    const leaderboardData = getLeaderboardData(selectedGame);
+    const leaderboardData =  await getLeaderboardData(selectedGame);
 
     if (leaderboardData.length === 0) {
         leaderboardContainer.innerHTML = `
@@ -97,6 +108,19 @@ filterButtons.forEach(button => {
 
         loadLeaderboard(selectedGame);
     });
+});
+
+
+// Funzione per aggiornare la leaderboard ogni 30 secondi
+document.addEventListener("DOMContentLoaded", () => {
+    loadLeaderboard("All");
+
+    // Aggiorna la leaderboard ogni 30 secondi
+    setInterval(() => {
+        const activeGame = document.querySelector(".filter-btn.active")
+        const selectedGame = activeGame ? activeGame.dataset.game : "All";
+        loadLeaderboard(selectedGame);
+    }, REFRESH_INTERVAL);
 });
 
 // Avvio iniziale

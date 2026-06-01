@@ -36,14 +36,6 @@
     margin-bottom: 5px;
 }
 
-
-/* Sottotitolo */
-.sudoku-subtitle {
-    color: #cccccc;
-    margin-top: 10px;
-}
-
-
 /* =========================
    LAYOUT GENERALE
 ========================= */
@@ -149,10 +141,6 @@ La board è una griglia CSS 9x9
 
 
 /* Cella selezionata */
-.sudoku-cell.highlight {
-    background: rgba(138, 43, 226, 0.18);
-    border-color: rgba(138, 43, 226, 0.6);
-}
 
 .sudoku-cell.selected {
     background: rgba(0, 255, 255, 0.22);
@@ -331,78 +319,6 @@ Grid Bootstrap + CSS custom
     border: 2px solid #ff0055 !important;
     box-shadow: 0 0 15px rgba(255, 0, 85, 0.6) !important;
 }
-/*WIN OVERLAY */
-.win-overlay {
-    position: fixed;
-    inset: 0; /* occupa tutto lo schermo */
-
-    display: none; /* nascosto di default */
-    /* Flexbox per centrare il contenuto, funziona solo quando display diventa flex */
-    justify-content: center;
-    align-items: center;
-
-    background: rgba(5, 8, 22, 0.75);
-    backdrop-filter: blur(8px);
-
-    z-index: 9999; /* mette la finestra/popup sopra tutto il resto */
-}
-/*se vinco, mostro l'overlay*/
-.win-overlay.show {
-    display: flex;
-}
-/* larghezzza massima della card, per evitare che su schermi grandi diventi troppo larga */
-.win-card {
-    max-width: 420px;
-}
-/*CONTENITORE BOTTONI */
-.win-buttons {
-    display: flex;
-    gap: 15px ;
-    width: 100%;
-    margin-top: 25px;
-}
-
-/* STILE BOTTONI VINCITA */
-.win-buttons button,
-.win-buttons a {
-    flex: 1 1 0; /* i bottoni occupano tutto lo spazio disponibile, diviso equamente */
-    min-height: 58px;
-    padding: 0px 18px;
-    margin: 0;
-
-    display: flex;
-    justify-content: center;
-    align-items: center;
-
-    border: none;
-    border-radius: 12px;
-
-    background: linear-gradient(90deg, #00ffff, #8a2be2);
-    color: white;
-    font-weight: bold;
-    text-decoration: none;
-    text-align: center;
-    cursor: pointer;
-    font-family: 'Orbitron', sans-serif;
-    box-shadow: 0 0 15px rgba(0, 255, 255, 0.5);
-    transition: 0.3s;
-
-    appearance: none;
-    -webkit-appearance: none;
-    box-sizing: border-box;
-}
-.win-buttons a{
-    display: flex;
-    justify-content: center;
-    align-items: center;
-}
-.win-buttons button:hover,
-.win-buttons a:hover {
-    transform: scale(1.05);
-    color: white;
-}
-
-
 /* =========================
    RESPONSIVE
 ========================= */
@@ -454,26 +370,5 @@ Grid Bootstrap + CSS custom
 
     .sudoku-panel {
         margin-top: 25px;
-    }
-
-    .win-buttons {
-        flex-direction: column;
-    }
-
-    .win-buttons button,
-    .win-buttons a {
-        width: 100%;
-        height: 52px;
-    }
-}
-
-@media screen and (max-width: 480px) {
-    .win-buttons {
-        flex-direction: column;
-    }
-
-    .win-buttons button,
-    .win-buttons a {
-        width: 100%;
     }
 }

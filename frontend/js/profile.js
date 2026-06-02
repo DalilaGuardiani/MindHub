@@ -10,7 +10,7 @@ const sudokuBest = document.getElementById("sudoku-best");
 const tictactoePoints = document.getElementById("tic-tac-toe-points");
 const snakeBest = document.getElementById("snake-best");
 
-const profileImageInput = document.getElementById("profile-image-input");
+const avatarOptions = document.querySelectorAll(".avatar-option");
 const profileImage = document.getElementById("profile-image");
 const defaultAvatar = document.getElementById("default-avatar");
 const removeProfileImageBtn = document.getElementById("remove-profile-image");
@@ -25,9 +25,9 @@ if (!loggedUser) {
     window.location.href = "login.html";
 }
 
-function showProfileImage(imageSrc) {
+function showProfileImage(imageName) {
     if (profileImage && defaultAvatar) {
-        profileImage.src = imageSrc;
+        profileImage.src = `../assets/avatar/${imageName}`;
         profileImage.style.display = "block";
         defaultAvatar.style.display = "none";
     }
@@ -155,48 +155,26 @@ async function loadProfileScores() {
     }
 }
 
-if (profileImageInput) {
-    profileImageInput.addEventListener("change", () => {
-        const file = profileImageInput.files[0];
+avatarOptions.forEach(option => {
+    option.addEventListener("click", async () => {
+        const selectedAvatar = option.dataset.avatar;
 
-        if (!file) {
-            return;
-        }
+        try {
+            const result = await updateProfileImage(loggedUserId, selectedAvatar);
 
-        if (!file.type.startsWith("image/")) {
-            alert("Devi scegliere un file immagine.");
-            return;
-        }
-
-        if (file.size > 1000000) {
-            alert("L'immagine è troppo grande. Scegli un'immagine sotto 1 MB.");
-            return;
-        }
-
-        const reader = new FileReader();
-
-        reader.onload = async () => {
-            const imageBase64 = reader.result;
-
-            try {
-                const result = await updateProfileImage(loggedUserId, imageBase64);
-
-                if (result.success) {
-                    showProfileImage(imageBase64);
-                    alert("Immagine profilo aggiornata.");
-                } else {
-                    alert(result.message || "Errore durante il salvataggio dell'immagine.");
-                }
-
-            } catch (error) {
-                console.error("Errore salvataggio immagine:", error);
-                alert("Errore di connessione al server.");
+            if (result.success) {
+                showProfileImage(selectedAvatar);
+                alert("Avatar aggiornato.");
+            } else {
+                alert(result.message || "Errore durante il salvataggio dell'avatar.");
             }
-        };
 
-        reader.readAsDataURL(file);
+        } catch (error) {
+            console.error("Errore salvataggio avatar:", error);
+            alert("Errore di connessione al server.");
+        }
     });
-}
+});
 
 if (removeProfileImageBtn) {
     removeProfileImageBtn.addEventListener("click", async () => {
@@ -205,18 +183,13 @@ if (removeProfileImageBtn) {
 
             if (result.success) {
                 showDefaultAvatar();
-
-                if (profileImageInput) {
-                    profileImageInput.value = "";
-                }
-
-                alert("Immagine profilo rimossa.");
+                alert("Avatar rimosso.");
             } else {
-                alert(result.message || "Errore durante la rimozione dell'immagine.");
+                alert(result.message || "Errore durante la rimozione dell'avatar.");
             }
 
         } catch (error) {
-            console.error("Errore rimozione immagine:", error);
+            console.error("Errore rimozione avatar:", error);
             alert("Errore di connessione al server.");
         }
     });

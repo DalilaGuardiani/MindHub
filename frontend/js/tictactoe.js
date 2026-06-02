@@ -47,9 +47,9 @@ function startGame(mode) {
   });
 
   if (mode === "pvp") {
-    statusText.textContent = "Modalità: Player vs Player — Turno di X";
+    statusText.textContent = "Mode: Player vs Player — X turn";
   } else {
-    statusText.textContent = "Modalità: Player vs CPU — Turno di X";
+    statusText.textContent = "Mode: Player vs CPU — X turn";
   }
   modeOverlay.classList.add("hidden");
 }
@@ -75,8 +75,8 @@ function handleCellClick() {
     saveScore("Tic Tac Toe", finalScore);
 
     showResult(
-      `${currentPlayer} ha vinto!`,
-      `Complimenti! Score: ${finalScore}`
+      `${currentPlayer} won!`,
+      `Congratulations! Score: ${finalScore}`
     );
 
     gameActive = false;
@@ -88,8 +88,8 @@ function handleCellClick() {
 
     saveScore("Tic Tac Toe", finalScore);
     showResult(
-      "Pareggio!",
-      "Nessun giocatore ha vinto."
+      "Draw!",
+      "No player won."
     );
     
     gameActive = false;
@@ -98,12 +98,12 @@ function handleCellClick() {
 
   if (gameMode === "cpu") {
     currentPlayer = "O";
-    statusText.textContent = "Turno della CPU";
+    statusText.textContent = "CPU turn";
 
     setTimeout(cpuMove, 500);
   } else {
     currentPlayer = currentPlayer === "X" ? "O" : "X";
-    statusText.textContent = `Turno di ${currentPlayer}`;
+    statusText.textContent = `${currentPlayer} turn`;
   }
 }
 
@@ -137,8 +137,8 @@ function cpuMove() {
     saveScore("Tic Tac Toe", finalScore);
 
     showResult(
-      "La CPU ha vinto!",
-      `Hai perso ${Math.abs(finalScore)} punti.`
+      "CPU won!",
+      `You lost ${Math.abs(finalScore)} points.`
     );
 
     gameActive = false;
@@ -150,8 +150,8 @@ function cpuMove() {
 
     saveScore("Tic Tac Toe", finalScore);
     showResult(
-      "Pareggio!",
-      "Nessun giocatore ha vinto."
+      "Draw!",
+      "No player won."
     );
 
     gameActive = false;
@@ -159,7 +159,7 @@ function cpuMove() {
   }
 
   currentPlayer = "X";
-  statusText.textContent = "Turno di X";
+  statusText.textContent = "X turn";
 }
 
 function checkWinner(player) {
@@ -179,7 +179,7 @@ function resetGame() {
       cell.textContent = "";
       cell.classList.remove("x", "o");
     });
-    statusText.textContent = "Seleziona una modalità";
+    statusText.textContent = "Choose a mode";
     gameActive = false;
     return;
   }
@@ -188,16 +188,12 @@ function resetGame() {
 }
 
 function showResult(title, text) {
-
   resultTitle.textContent = title;
   resultText.textContent = text;
-
   resultOverlay.classList.add("show");
 }
 
 playAgainBtn.addEventListener("click", () => {
-
   resultOverlay.classList.remove("show");
-
   startGame(gameMode);
 });

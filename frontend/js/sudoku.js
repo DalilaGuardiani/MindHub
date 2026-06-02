@@ -183,7 +183,7 @@ function selectCell() {
 
 function insertNumber(number) {
     if (!selectedCell) {
-        message.textContent = "Seleziona prima una cella.";
+        message.textContent = "Select a cell first.";
         return;
     }
 
@@ -221,13 +221,13 @@ function checkSudoku() {
     });
 
     if (hasErrors) {
-        message.textContent = "Ci sono degli errori.";
+        message.textContent = "There are some mistakes.";
         message.style.color = "#ff0055";
         return;
     }
 
     if (hasEmptyCells) {
-        message.textContent = "Ci sono ancora celle vuote.";
+        message.textContent = "There are still empty cells.";
         message.style.color = "#00ffff";
         return;
     }
@@ -236,7 +236,7 @@ function checkSudoku() {
 
     saveScore("Sudoku", finalScore);
 
-    message.textContent = "Complimenti! Sudoku completato!";
+    message.textContent = "Congratulations! Sudoku completed!";
     message.style.color = "#00ffff";
     winOverlay.classList.add("show");
     

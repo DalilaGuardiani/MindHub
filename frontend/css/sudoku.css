@@ -13,7 +13,7 @@
     flex-direction: column;
     justify-content: center;
 
-    overflow: hidden;
+    overflow-x: hidden;
 }
 
 /* TITOLO */
@@ -42,7 +42,7 @@ Qui aggiungiamo solo spazio.*/
     border-radius: 20px;
 
     background:rgba(255,255,255,0.05);
-    border: 1px solid rgba(255,255,255,0.25);
+    border: 1px solid rgba(0,255,255,0.25);
     backdrop-filter: blur(10px);
     box-shadow: 0 0 20px rgba(0,255,255,0.15);
 }
@@ -115,12 +115,12 @@ Qui aggiungiamo solo spazio.*/
 /* PANEL LATERALE */
 .sudoku-panel {
     background: rgba(255,255,255,0.05);
-    border: 1px solid rgba(255,255,255,0.1);
+    border: 1px solid rgba(0,255,255,0.25);
 
     border-radius: 20px;
     padding: 14px;
     backdrop-filter: blur(10px);
-    box-shadow: 0 0 20px rgba(138,43,226,0.15);
+    box-shadow: 0 0 20px rgba(0,255,255,0.15);
 }
 
 /* Titolo controls */
@@ -164,7 +164,8 @@ Qui aggiungiamo solo spazio.*/
     font-weight: bold;
     color: white;
 
-    background: linear-gradient(90deg, var(--cyan), var(--purple));
+    background: var(--main-gradient);
+    font-family: 'Orbitron', sans-serif;
     transition: 0.2s;
 }
 

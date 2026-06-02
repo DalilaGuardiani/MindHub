@@ -1,5 +1,4 @@
 /* SNAKE PAGE */
-
 .game-page {
     min-height: 100vh;
     overflow-x: hidden;
@@ -157,6 +156,7 @@
 
 /* MOBILE CONTROLS */
 .mobile-controls {
+    display: none;
     margin-top: 18px;
     flex-direction: column;
     align-items: center;
@@ -220,6 +220,9 @@
     }
     .snake-actions button {
         width: auto;
+    }
+    .mobile-controls {
+        display: flex;
     }
 }
 

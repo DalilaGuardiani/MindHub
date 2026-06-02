@@ -33,7 +33,7 @@ async function loadLeaderboard(selectedGame = "All") {
     if (leaderboardData.length === 0) {
         leaderboardContainer.innerHTML = `
             <p class="empty-leaderboard">
-                Nessun punteggio disponibile per ${selectedGame}.
+                No scores available for ${selectedGame}.
             </p>
         `;
         return;

@@ -1,4 +1,4 @@
-/*Per le immagini svg ho usato tabler icone*/ 
+// Le icone del Memoru sono svg salvati nella cartella assets/memory 
 const cards = [
    "brain.svg", "brain.svg",
    "alien.svg", "alien.svg",

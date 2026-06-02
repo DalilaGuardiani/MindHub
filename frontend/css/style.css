@@ -707,6 +707,15 @@ footer {
 .back-home {
     display: inline-block;
     margin-top: 25px;
+    color: var(--cyan);
+    text-decoration: none;
+    font-weight: bold;
+    transition: 0.3s;
+}
+
+.back-home:hover {
+    color: var(--white);
+    text-shadow: 0 0 10px var(--cyan);
 }
 
 .guest-modal {

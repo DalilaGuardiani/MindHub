@@ -38,7 +38,6 @@ async function loadNavbarAvatar() {
     }
     try {
         const result = await getUserProfile(loggedUserId);
-        console.log("Profilo navabar:", result);
         if(result.success && result.user.profile_image) {
             showNavbarAvatar(result.user.profile_image);
         } else {
@@ -58,7 +57,6 @@ if (loggedUser && authLinks && userMenu && navbarUsername) {
 }
 
 // MODALITÀ OSPITE PER ACCESSO AI GIOCHI
-
 const gameLinks = document.querySelectorAll(".game-link");
 const guestModal = document.getElementById("guest-modal");
 const continueGuestBtn = document.getElementById("continue-guest-btn");

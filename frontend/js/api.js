@@ -40,7 +40,7 @@ function registerUser(username, email, password) {
     });
 }
 
-//aggiunta di un endpoint per ottenere la classifica, con possibilità di filtrare per gioco
+// Recupera la leaderboard generale oppure filtrata per gioco
 function getLeaderboard(game=null) {
     if (game && game !== "All") {
         return apiRequest(`/leaderboard/${game}`);

@@ -17,7 +17,7 @@ function showNavbarAvatar(imageName){
     }
     
     if (navbarProfileImage && navbarDefaultAvatar){
-        navbarProfileImage.src = `../assets/avatar/${imageName}`;
+        navbarProfileImage.src = `/assets/avatar/${imageName}`;
         navbarProfileImage.style.display = "block";
         navbarDefaultAvatar.style.display = "none";
     }
@@ -51,9 +51,9 @@ async function loadNavbarAvatar() {
 }
 
 if (loggedUser && authLinks && userMenu && navbarUsername) {
-    authLinks.classList.add("hidden");
-    userMenu.classList.remove("hidden");
-    navbarUsername.textContent = loggedUser;
+    authLinks.classList.add("hidden"); //nasconde Login e Register
+    userMenu.classList.remove("hidden"); // mostra il menu utente
+    navbarUsername.textContent = loggedUser; //scrive nella navbar il nome dell'utente
     loadNavbarAvatar();
 }
 

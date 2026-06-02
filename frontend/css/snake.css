@@ -2,11 +2,12 @@
 
 .game-page {
     min-height: 100vh;
-    overflow: hidden;
+    overflow-x: hidden;
 }
 
 .snake-section {
-    height: 100vh;
+    min-height: 100vh;
+    height: auto;
     padding: 8px 20px;
 
     display: flex;
@@ -18,13 +19,9 @@
 
 .snake-section h1 {
     font-size: clamp(2rem, 5vw, 2.7rem);
-    color: #8a2be2;
-
-    text-shadow:
-        0 0 8px rgba(138, 43, 226, 0.9),
-        0 0 18px rgba(138, 43, 226, 0.5);
-
-    margin-bottom: 8px;
+    color: var(--cyan);
+    text-shadow: 0 0 15px var(--cyan); /* Effetto glow */
+    margin-bottom: 12px;
 }
 
 /* INFO */
@@ -35,19 +32,17 @@
 }
 
 .info-box {
-    background: rgba(255, 255, 255, 0.06);
-
-    border: 1px solid rgba(138, 43, 226, 0.25);
+    background: var(--glass-bg);
+    border: 1px solid rgba(0, 255, 255, 0.25);
     border-radius: 12px;
-
-    padding: 9px 18px;
-    color: white;
+    padding: 12px 20px;
+    color: var(--white);
     font-weight: bold;
-    box-shadow: 0 0 12px rgba(138, 43, 226, 0.18);
+    box-shadow: 0 0 12px rgba(0, 255, 255, 0.18);
 }
 
 .info-box span {
-    color: #00ffff;
+    color: var(--cyan);
 }
 
 /* DESKTOP LAYOUT */
@@ -68,10 +63,10 @@
     padding: 24px;
     border-radius: 20px;
 
-    background: rgba(255, 255, 255, 0.05);
-    border: 1px solid rgba(138, 43, 226, 0.25);
+    background: var(--glass-bg);
+    border: 1px solid rgba(0, 255, 255, 0.25);
     box-shadow:
-        0 0 18px rgba(138, 43, 226, 0.2);
+        0 0 18px rgba(0, 255, 255, 0.18);
 }
 
 /* BOARD */
@@ -85,11 +80,11 @@
     padding: 12px;
     border-radius: 20px;
 
-    background: rgba(255, 255, 255, 0.05);
-    border: 2px solid rgba(138, 43, 226, 0.55);
+    background: var(--glass-bg);
+    border: 1px solid rgba(0, 255, 255, 0.35);
     box-shadow:
-        0 0 22px rgba(138, 43, 226, 0.35),
-        0 0 40px rgba(0, 255, 255, 0.12);
+        0 0 22px rgba(0, 255, 255, 0.22),
+        0 0 40px rgba(138, 43, 226, 0.12);
 
     backdrop-filter: blur(10px);
 }
@@ -103,15 +98,15 @@
 
 /* SNAKE */
 .snake {
-    background: #00ffff;
+    background: var(--cyan);
     box-shadow:
         0 0 8px rgba(0, 255, 255, 0.9),
-        0 0 14px rgba(0, 255, 255, 0.45);
+        0 0 14px var(--cyan-glow);
 }
 
 /* FOOD */
 .food {
-    background: #8a2be2;
+    background: var(--purple);
     border-radius: 50%;
     box-shadow:
         0 0 10px rgba(138, 43, 226, 0.95),
@@ -123,7 +118,7 @@
     min-height: 22px;
     margin-top: 14px;
     margin-bottom: 12px;
-    color: #cccccc;
+    color: var(--text-soft);
 }
 
 /* BUTTONS */
@@ -139,7 +134,7 @@
     border: none;
     border-radius: 12px;
 
-    background: linear-gradient(90deg, #00ffff, #8a2be2);
+    background: linear-gradient(90deg, var(--cyan), var(--purple));
 
     color: white;
     font-weight: bold;

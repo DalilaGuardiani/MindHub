@@ -113,7 +113,7 @@
 
     background: radial-gradient(
         circle at top,
-        #ffffff 0%,
+        var(--white) 0%,
         #e9fbff 55%,
         #d9d6ff 100%
     );
@@ -239,7 +239,7 @@
     border-radius: 50%;
     background: radial-gradient(
         circle at top,
-        #ffffff 0%,
+        var(--white) 0%,
         #e9fbff 55%,
         #d9d6ff 100%
     );
@@ -267,13 +267,13 @@
     border: none;
     border-radius: 14px;
 
-    color: #ffffff;
+    color: var(--white);
     font-family: 'Orbitron', sans-serif;
     font-weight: 700;
     text-decoration: none;
     cursor: pointer;
 
-    background: linear-gradient(90deg, #00ffff, #8a2be2);
+    background: linear-gradient(90deg, var(--cyan), var(--purple));
     box-shadow: 0 0 15px rgba(0, 255, 255, 0.35);
     transition: 0.25s;
 }
@@ -289,7 +289,7 @@
 .top-logout-btn:hover,
 .home-link:hover {
     transform: scale(1.04);
-    color: #ffffff;
+    color: var(--white);
 }
 
 /* STATISTICHE */

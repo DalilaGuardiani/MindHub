@@ -1,11 +1,12 @@
 /*GAME PAGE FULL SCREEN*/
 .game-page {
     min-height: 100vh;
-    overflow: hidden;
+    overflow-x: hidden;
 }
 /* MEMORY SECTION */
 .memory-section {
-    height: 100vh;
+    min-height: 100vh;
+    height: auto;
     padding: 25px 20px;
     display:flex;
     flex-direction: column;
@@ -13,10 +14,11 @@
     justify-content: center;
     align-items: center;
 }
-
 .memory-section h1 {
-    font-size: 2.4rem;
+    font-size: clamp(2rem, 5vw, 2.7rem);
     margin-bottom: 18px;
+    color: var(--cyan);
+    text-shadow: 0 0 15px var(--cyan);
 }
 
 .memory-info {
@@ -27,10 +29,13 @@
 }
 
 .info-box {
-    background: rgba(255, 255, 255, 0.06);
-    padding: 15px 25px;
+    background: var(--glass-bg);
+    padding: 12px 20px;
     border-radius: 12px;
-    box-shadow: 0 0 12px rgba(0, 255, 255, 0.2);
+    border: 1px solid rgba(0, 255, 255, 0.25);
+    color: var(--white);
+    font-weight: bold;
+    box-shadow: 0 0 12px rgba(0, 255, 255, 0.18);
 }
 
 .memory-grid {
@@ -81,22 +86,22 @@
 .card-front {
     background: rgba(255, 255, 255, 0.08);
     border: 1px solid rgba(0, 255, 255, 0.4);
-    color: #00ffff;
+    color: var(--cyan);
     font-size: 2.5rem;
     box-shadow: 0 0 12px rgba(0, 255, 255, 0.25);
 }
 
 .card-back {
-    background: linear-gradient(135deg, #00ffff, #8a2be2);
+    background: linear-gradient(135deg, var(--cyan), var(--purple));
     transform: rotateY(180deg);
-    box-shadow: 0 0 18px rgba(138, 43, 226, 0.45);
+    box-shadow: 0 0 18px var(--purple-glow);
 }
 
 .win-message {
-    color: #00ffff;
+    color: var(--cyan);
     font-size: 1.2rem;
     margin-top: 20px;
-    text-shadow: 0 0 10px #00ffff;
+    text-shadow: 0 0 10px var(--cyan);
 }
 
 #restart-btn {
@@ -104,8 +109,8 @@
     padding: 14px 28px;
     border: none;
     border-radius: 12px;
-    background: linear-gradient(90deg, #00ffff, #8a2be2);
-    color: white;
+    background: var(--main-gradient);
+    color: var(--white);
     font-weight: bold;
     cursor: pointer;
     box-shadow: 0 0 15px rgba(0, 255, 255, 0.5);

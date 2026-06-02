@@ -1,5 +1,4 @@
 /* TIC TAC TOE PAGE */
-
 .tictactoe-section {
     min-height: 100vh; /* Assicura che la sezione occupi almeno tutta l'altezza della viewport */
     padding: 12px 20px;
@@ -15,13 +14,12 @@
 
 .tictactoe-section h1 {
     font-size: clamp(2rem, 5vw, 3rem);
-    color: #00ffff;
-    text-shadow: 0 0 15px #00ffff; /* Effetto glow */
+    color: var(--cyan);
+    text-shadow: 0 0 15px var(--cyan); /* Effetto glow */
     margin-bottom: 12px;
 }
 
 /* MODE BUTTONS */
-
 .mode-selection {
     display: flex;
     gap: 15px;
@@ -35,7 +33,7 @@
     border: none;
     border-radius: 12px;
 
-    background: linear-gradient(90deg, #00ffff, #8a2be2);
+    background: linear-gradient(90deg, var(--cyan), var(--purple));
     color: white;
 
     font-weight: bold;
@@ -43,7 +41,7 @@
 
     font-family: 'Orbitron', sans-serif;
 
-    box-shadow: 0 0 15px rgba(0, 255, 255, 0.45);
+    box-shadow: 0 0 15px var(--cyan-glow);
     transition: 0.3s;
 }
 
@@ -53,15 +51,13 @@
 }
 
 /* STATUS */
-
 #game-status {
     min-height: 25px; 
-    color: #cccccc;
+    color: var(--text-soft);
     margin-bottom: 20px;
 }
 
 /* BOARD */
-
 .board {
     display: grid;
     grid-template-columns: repeat(3, min(24vw, 105px));
@@ -71,7 +67,7 @@
     padding: clamp(10px, 2vw, 16px);
     border-radius: 22px;
 
-    background: rgba(255, 255, 255, 0.05);
+    background: var(--glass-bg);
     border: 1px solid rgba(0, 255, 255, 0.25);
 
     backdrop-filter: blur(10px);
@@ -82,7 +78,6 @@
 }
 
 /* CELLS */
-
 .cell {
     width: min(24vw, 105px);
     height: min(24vw, 105px);
@@ -107,22 +102,21 @@
 
 .cell:hover {
     transform: scale(1.05);
-    border-color: #00ffff;
-    box-shadow: 0 0 15px rgba(0, 255, 255, 0.45);
+    border-color: var(--cyan);
+    box-shadow: 0 0 15px var(--cyan-glow);
 }
 
 .cell.x {
-    color: #00ffff;
-    text-shadow: 0 0 15px #00ffff;
+    color: var(--cyan);
+    text-shadow: 0 0 15px var(--cyan);
 }
 
 .cell.o {
-    color: #8a2be2;
-    text-shadow: 0 0 15px #8a2be2;
+    color: var(--purple);
+    text-shadow: 0 0 15px var(--purple);
 }
 
 /* ACTIONS */
-
 .reset-btn {
     margin-top: 14px;
 }
@@ -130,8 +124,8 @@
 .back-home {
     margin-top: 10px;
 }
-/* MODE OVERLAY */
 
+/* MODE OVERLAY */
 .mode-overlay {
     position: fixed;
     inset: 0;
@@ -155,13 +149,13 @@
 }
 
 .mode-card h2 {
-    color: #00ffff;
-    text-shadow: 0 0 15px #00ffff;
+    color: var(--cyan);
+    text-shadow: 0 0 15px var(--cyan);
     margin-bottom: 15px;
 }
 
 .mode-card p {
-    color: #cccccc;
+    color: var(--text-soft);
     margin-bottom: 25px;
 }
 

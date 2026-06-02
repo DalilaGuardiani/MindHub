@@ -1,37 +1,6 @@
 const leaderboardContainer = document.getElementById("leaderboard-container");
 const filterButtons = document.querySelectorAll(".filter-btn");
 
-/*
-// Dati di esempio mostrati solo se non ci sono ancora punteggi salvati
-const defaultLeaderboardData = [
-    {
-        username: "PlayerOne",
-        game: "Memory",
-        score: 2450
-    },
-    {
-        username: "CyberMind",
-        game: "Sudoku",
-        score: 1980
-    },
-    {
-        username: "SnakePro",
-        game: "Snake",
-        score: 1200
-    },
-    {
-        username: "Strategist",
-        game: "Tic Tac Toe",
-        score: 900
-    }
-];
-
-// Recupera i punteggi salvati nel localStorage
-function getSavedScores() {
-    return JSON.parse(localStorage.getItem("mindhubScores")) || [];
-}
-*/
-
 const REFRESH_INTERVAL = 30000; // 30 secondi
 
 
@@ -119,6 +88,3 @@ document.addEventListener("DOMContentLoaded", () => {
         loadLeaderboard(selectedGame);
     }, REFRESH_INTERVAL);
 });
-
-// Avvio iniziale
-loadLeaderboard();

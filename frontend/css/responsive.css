@@ -1,5 +1,4 @@
 /* TABLET */
-
 @media screen and (max-width: 1024px) {
     .navbar {
         padding: 20px 30px;
@@ -10,23 +9,19 @@
     }
 }
 
-
 /* MOBILE */
 @media screen and (max-width: 768px) {
-
     /* NAVBAR */
     .navbar {
         flex-direction: column;
         gap: 20px;
         padding: 20px;
     }
-
     nav {
         gap: 20px;
         flex-wrap: wrap;
         justify-content: center;
     }   
-
     nav a {
         font-size: 0.9rem;
     }
@@ -42,12 +37,11 @@
     .hero-content p {
         font-size: 1rem;
     }
-    .hero.btn {
+    .hero-btn {
         padding: 12px 25px;
     }
 
     /* SECTION TITLES */
-
     .section-title {
         font-size: 2rem;
     }
@@ -56,11 +50,9 @@
     .games-section {
         padding: 70px 20px;
     }
-
     .games-grid {
         grid-template-columns: 1fr;
     }
-
     .game-card {
         padding: 30px 20px;
     }
@@ -69,7 +61,6 @@
     .leaderboard-section {
         padding: 70px 20px;
     }
-
     .leaderboard-card {
         flex-direction: column;
         text-align: center;
@@ -82,25 +73,19 @@
 }
 
 /* SMALL MOBILE */
-
 @media screen and (max-width: 480px) {
-
     .hero-content h2 {
         font-size: 2.2rem;
     }
-
     .logo {
         width: 50px;
     }
-
     .logo-container h1 {
         font-size: 1.4rem;
     }
-
     nav {
         gap: 15px;
     }
-
     nav a {
         font-size: 0.8rem;
     }
@@ -111,7 +96,6 @@
     .game-popup-buttons {
         flex-direction: column;
     }
-
     .game-popup-buttons button,
     .game-popup-buttons a {
         width: 100%;

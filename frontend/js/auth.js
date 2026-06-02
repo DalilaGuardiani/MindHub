@@ -40,9 +40,6 @@ if (registerForm) {
         }
 
         const result = await registerUser(username, email, password);
-
-        console.log("Risposta registrazione:", result);
-
         if (result.success) {
             localStorage.removeItem("mindhubGuest");
             

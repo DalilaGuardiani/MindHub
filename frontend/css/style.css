@@ -34,7 +34,7 @@ body {
     font-family: 'Orbitron', sans-serif;
     overflow-x: hidden;
 }
-t
+
 /*BACKGROUND EFFECT*/
 body::before {
     content: '';
@@ -87,7 +87,6 @@ body::after {
 }
 
 .logo { 
-    /*width:65px;*/ /* dimensione originale del logo */
     width: 40px;
     height: 40px;
 }
@@ -185,7 +184,6 @@ nav a:hover {
     object-position: center;
     padding: 2px;
   
-    background: trasparent;
     border-radius: 0;
     display: none;
 }

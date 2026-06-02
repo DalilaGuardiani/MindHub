@@ -14,7 +14,6 @@ async function getScores() {
     return [];
 }
 
-// Salva un nuovo punteggio
 async function saveScore(game, score) {
     const isGuest = localStorage.getItem("mindhubGuest") === "true";
     const userId = localStorage.getItem("mindhubUserId");

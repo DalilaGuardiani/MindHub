@@ -170,7 +170,6 @@ function createBoard() {
     }
 }
 
-// Seleziona una cella vuota
 function selectCell() {
   if (selectedCell) {
     selectedCell.classList.remove("selected");
@@ -182,8 +181,6 @@ function selectCell() {
   message.textContent = "";
 }
 
-
-// Inserisce un numero nella cella selezionata
 function insertNumber(number) {
     if (!selectedCell) {
         message.textContent = "Seleziona prima una cella.";
@@ -198,8 +195,6 @@ function insertNumber(number) {
     currentBoard[row][col] = Number(number);
 }
 
-
-// Controlla se la griglia è corretta
 function checkSudoku() {
     let hasErrors = false;
     let hasEmptyCells = false;
@@ -247,7 +242,6 @@ function checkSudoku() {
     
 }
 
-// Reset della partita
 function resetSudoku() {
     currentBoard = copyBoard(initialBoard);
 

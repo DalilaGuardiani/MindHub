@@ -59,7 +59,7 @@ function drawGame() {
     cells[food].classList.add("food");
 }
 
-/* Avvia il gioco */
+/* Avvio del gioco */
 function startGame() {
     if (gameRunning) {
         return;

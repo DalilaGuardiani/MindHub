@@ -1,117 +1,167 @@
-<!DOCTYPE html>
-<html lang="it">
-    <head>
-        <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title>Profile - MindHub</title>
+<html lang="it"><head>
+            <meta charset="UTF-8">
+            <meta name="viewport" content="width=device-width, initial-scale=1.0">
+            <title>Profile - MindHub</title>
+
+            <link rel="stylesheet" href="../css/style.css">
+            <link rel="stylesheet" href="../css/profile.css">
+            <link rel="stylesheet" href="../css/responsive.css">
+        </head>
+
+        <body>
+            <section class="profile-section">
+                <div class="profile-page">
+
+                    <div class="profile-topbar">
+                        <a href="../index.html" class="profile-brand">
+                            <img src="../assets/logo.png" alt="MindHub logo">
+                            <span>MindHub</span>
+                        </a>
+
+                        <button type="button" id="logout-btn" class="top-logout-btn">Logout</button>
+                    </div>
+
+                    <div class="profile-layout">
+
+                        <aside class="profile-sidebar">
+                            <div class="profile-avatar" id="profile-avatar">
+                                <span id="default-avatar">👤</span>
+                                <img id="profile-image" alt="Profile image">
+                            </div>
+
+                            <h1 id="profile-username-title">User</h1>
+                            <p class="profile-subtitle">MindHub Player</p>
+
+                            <div class="total-card">
+                                <span>Total points</span>
+                                <strong id="profile-points">0</strong>
+                            </div>
+
+                            <a href="../index.html" class="home-link">Back to home</a>
+                        </aside>
+
+                        <main class="profile-content">
+
+                            <section class="profile-panel account-panel">
+                                <div class="panel-heading">
+                                    <span class="panel-kicker">Account</span>
+                                    <h2>Your profile</h2>
+                                </div>
+
+                                <div class="profile-info">
+                                    <div class="info-row">
+                                        <span>Username</span>
+                                        <strong id="profile-username">User</strong>
+                                    </div>
+
+                                    <div class="info-row">
+                                        <span>Email</span>
+                                        <strong id="profile-email">Not available</strong>
+                                    </div>
+
+                                    <div class="info-row">
+                                        <span>Status</span>
+                                        <strong>Registered player</strong>
+                                    </div>
+                                </div>
+                            </section>
+
+                            <section class="profile-panel avatar-panel">
+                                <div class="panel-heading">
+                                    <span class="panel-kicker">Avatar</span>
+                                    <h2>Choose your character</h2>
+                                </div>
+
+                                <div class="avatar-list">
+                                    <button type="button" class="avatar-option" data-avatar="cyborg.png" aria-label="Cyborg avatar">
+                                        <img src="../assets/avatar/cyborg.png" alt="Cyborg">
+                                    </button>
+
+                                    <button type="button" class="avatar-option" data-avatar="robot.png" aria-label="Robot avatar">
+                                        <img src="../assets/avatar/robot.png" alt="Robot">
+                                    </button>
+
+                                    <button type="button" class="avatar-option" data-avatar="girl.png" aria-label="Girl avatar">
+                                        <img src="../assets/avatar/girl.png" alt="Girl">
+                                    </button>
+
+                                    <button type="button" class="avatar-option" data-avatar="alien.png" aria-label="Alien avatar">
+                                        <img src="../assets/avatar/alien.png" alt="Alien">
+                                    </button>
+
+                                    <button type="button" class="avatar-option" data-avatar="hacker.png" aria-label="Hacker avatar">
+                                        <img src="../assets/avatar/hacker.png" alt="Hacker">
+                                    </button>
+
+                                    <button type="button" class="avatar-option" data-avatar="metaverse.png" aria-label="Metaverse avatar">
+                                        <img src="../assets/avatar/metaverse.png" alt="Metaverse">
+                                    </button>
+
+                                    <button type="button" class="avatar-option" data-avatar="ninja.png" aria-label="Ninja avatar">
+                                        <img src="../assets/avatar/ninja.png" alt="Ninja">
+                                    </button>
+
+                                    <button type="button" class="avatar-option" data-avatar="samurai.png" aria-label="Samurai avatar">
+                                        <img src="../assets/avatar/samurai.png" alt="Samurai">
+                                    </button>
+
+                                    <button type="button" class="avatar-option" data-avatar="octopus.png" aria-label="Octopus avatar">
+                                        <img src="../assets/avatar/octopus.png" alt="Octopus">
+                                    </button>
+
+                                    <button type="button" class="avatar-option" data-avatar="pirate.png" aria-label="Pirate avatar">
+                                        <img src="../assets/avatar/pirate.png" alt="Pirate">
+                                    </button>
+                                </div>
+
+                                <button type="button" id="remove-profile-image" class="remove-avatar-btn">Remove avatar</button>
+                            </section>
+
+                            <section class="profile-panel stats-panel">
+                                <div class="panel-heading">
+                                    <span class="panel-kicker">Scores</span>
+                                    <h2>Game statistics</h2>
+                                </div>
+
+                                <div class="profile-stats">
+                                    <div class="stat-box">
+                                        <span class="stat-icon">🧠</span>
+                                        <h3>Memory</h3>
+                                        <p>Best score</p>
+                                        <strong id="memory-best">0</strong>
+                                    </div>
+
+                                    <div class="stat-box">
+                                        <span class="stat-icon">🔢</span>
+                                        <h3>Sudoku</h3>
+                                        <p>Best score</p>
+                                        <strong id="sudoku-best">0</strong>
+                                    </div>
+
+                                    <div class="stat-box">
+                                        <span class="stat-icon">❌</span>
+                                        <h3>Tic Tac Toe</h3>
+                                        <p>Total points</p>
+                                        <strong id="tic-tac-toe-points">0</strong>
+                                    </div>
+
+                                    <div class="stat-box">
+                                        <span class="stat-icon">🐍</span>
+                                        <h3>Snake</h3>
+                                        <p>Best score</p>
+                                        <strong id="snake-best">0</strong>
+                                    </div>
+                                </div>
+                            </section>
+
+                        </main>
+                    </div>
+                </div>
+            </section>
+
+            <script src="../js/api.js"></script>
+            <script src="../js/profile.js"></script>
         
-        <link rel="stylesheet" href="../css/style.css">
-        <link rel="stylesheet" href="../css/profile.css">
-        <link rel="stylesheet" href="../css/responsive.css">
-    </head>
-    
-    <body>
-        
-        <section class="profile-section">
-            
-            <div class="profile-card">
 
-                <div class="profile-header">
-
-                    <div class="profile-avatar" id="profile-avatar">
-                        <span id="default-avatar">👤</span>
-                        <img id="profile-image" alt="Profile image">
-                    </div>
-                    <div class="avatar-choice">
-                        <p>Choose your avatar:</p>
-                        <div class="avatar-list">
-                            
-                            <button type="button" class="avatar-option" data-avatar="cyborg.png">
-                                <img src="../assets/avatar/cyborg.png" alt="Cyborg">
-                            </button>
-                            <button type="button" class="avatar-option" data-avatar="robot.png">
-                                <img src="../assets/avatar/robot.png" alt="Robot">
-                            </button>
-                            <button type="button" class="avatar-option" data-avatar="girl.png">
-                                <img src="../assets/avatar/girl.png" alt="Girl">
-                            </button>
-                            <button type="button" class="avatar-option" data-avatar="alien.png">
-                                <img src="../assets/avatar/alien.png" alt="Alien">
-                            </button>
-                            <button type="button" class="avatar-option" data-avatar="hacker.png">
-                                <img src="../assets/avatar/hacker.png" alt="Hacker">
-                            </button>
-                            <button type="button" class="avatar-option" data-avatar="metaverse.png">
-                                <img src="../assets/avatar/metaverse.png" alt="Metaverse">
-                            </button>
-                            <button type="button" class="avatar-option" data-avatar="ninja.png">
-                                <img src="../assets/avatar/ninja.png" alt="Ninja">
-                            </button>
-                            <button type="button" class="avatar-option" data-avatar="samurai.png">
-                                <img src="../assets/avatar/samurai.png" alt="Samurai">
-                            </button>
-                            <button type="button" class="avatar-option" data-avatar="octopus.png">
-                                <img src="../assets/avatar/octopus.png" alt="Octopus">
-                            </button>
-                            <button type="button" class="avatar-option" data-avatar="pirate.png">
-                                <img src="../assets/avatar/pirate.png" alt="Pirate">    
-                            </button>
-                            
-                        </div>
-
-                        <button type="button" id="remove-profile-image">Remove avatar</button>
-        
-                    </div>
-                    
-                    <h1 id="profile-username-title">User</h1>
-                    <p class="profile-subtitle">MindHub Player</p>
-                </div>
-
-                <div class="profile-info">
-                    <p>
-                        <span>Username:</span>
-                        <span id="profile-username">User</span>
-                    </p>
-
-                    <p>
-                        <span>Email:</span>
-                        <span id="profile-email">Not available</span>
-                    </p>
-
-                    <p>
-                        <span>Total Points:</span>
-                        <span id="profile-points">2450</span>
-                    </p>
-                </div>
-                
-                <div class="profile-stats">
-                    <div class="stat-box">
-                        <h3>Memory</h3>
-                        <p>Best score: <span id="memory-best">0</span></p>
-                    </div>
-
-                    <div class="stat-box">
-                        <h3>Sudoku</h3>
-                        <p>Best score: <span id="sudoku-best">0</span></p>
-                    </div>
-
-                    <div class="stat-box">
-                        <h3>Tic Tac Toe</h3>
-                        <p>Total points: <span id="tic-tac-toe-points">0</span></p>
-                    </div>
-
-                    <div class="stat-box">
-                        <h3>Snake</h3>
-                        <p>Best score: <span id="snake-best">0</span></p>
-                    </div>
-                </div>
-                <div class="profile-actions">
-                    <a href="../index.html">Home</a>
-                    <button id="logout-btn">Logout</button>
-                </div>
-            </div>
-        </section>
-        <script src="../js/api.js"></script>
-        <script src="../js/profile.js"></script>
     </body>
 </html>

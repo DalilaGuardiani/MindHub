@@ -1,15 +1,60 @@
 // NAVBAR LOGIN / USER
 
 const loggedUser = localStorage.getItem("mindhubUser");
+const loggedUserId = localStorage.getItem("mindhubUserId");
 
 const authLinks = document.getElementById("auth-links");
 const userMenu = document.getElementById("user-menu");
+
 const navbarUsername = document.getElementById("navbar-username");
+const navbarProfileImage = document.getElementById("navbar-profile-image");
+const navbarDefaultAvatar = document.getElementById("navbar-default-avatar");
+
+function showNavbarAvatar(imageName){
+    if(!imageName) {
+        showNavbarDefaultAvatar();
+        return;
+    }
+    
+    if (navbarProfileImage && navbarDefaultAvatar){
+        navbarProfileImage.src = `../assets/avatar/${imageName}`;
+        navbarProfileImage.style.display = "block";
+        navbarDefaultAvatar.style.display = "none";
+    }
+}
+
+function showNavbarDefaultAvatar() {
+    if (navbarProfileImage && navbarDefaultAvatar) {
+        navbarProfileImage.src = "";
+        navbarProfileImage.style.display = "none";
+        navbarDefaultAvatar.style.display = "block";
+    }
+}
+
+async function loadNavbarAvatar() {
+    if (!loggedUserId) {
+        showNavbarDefaultAvatar();
+        return; 
+    }
+    try {
+        const result = await getUserProfile(loggedUserId);
+        console.log("Profilo navabar:", result);
+        if(result.success && result.user.profile_image) {
+            showNavbarAvatar(result.user.profile_image);
+        } else {
+            showNavbarDefaultAvatar();
+        }
+    } catch (error) {
+        console.error("Errore caricamento avatar navbar:", error);
+        showNavbarDefaultAvatar();
+    }
+}
 
 if (loggedUser && authLinks && userMenu && navbarUsername) {
     authLinks.classList.add("hidden");
     userMenu.classList.remove("hidden");
     navbarUsername.textContent = loggedUser;
+    loadNavbarAvatar();
 }
 
 // MODALITÀ OSPITE PER ACCESSO AI GIOCHI

@@ -20,9 +20,19 @@ const loggedUserId = localStorage.getItem("mindhubUserId");
 const loggedUserEmail = localStorage.getItem("mindhubUserEmail");
 
 // Se non c'è nessun utente salvato, rimanda al login
-if (!loggedUser) {
+if (!loggedUser || !loggedUserId) {
     alert("Devi essere loggato per accedere al profilo.");
     window.location.href = "login.html";
+}
+
+function setSelectedAvatar(imageName) {
+    avatarOptions.forEach(option => {
+        if (option.dataset.avatar === imageName) {
+            option.classList.add("selected-avatar");
+        } else {
+            option.classList.remove("selected-avatar");
+        }
+    });
 }
 
 function showProfileImage(imageName) {

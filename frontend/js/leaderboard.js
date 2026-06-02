@@ -37,24 +37,17 @@ const REFRESH_INTERVAL = 30000; // 30 secondi
 
 // Recupera i dati della leaderboard in base al filtro scelto
 async function getLeaderboardData(selectedGame = "All") {
-
     try {
         const response = await getLeaderboard(selectedGame);
-        let data= [];
 
         if (response.success && response.leaderboard) {
-            data=response.leaderboard;
-        } else {
-            console.error("Errore nel recupero della leaderboard:", response.message);
-            return [];
+            return response.leaderboard
+                .sort((a, b) => Number(b.score) - Number(a.score))
+                .slice(0, 5);
         }
-    if (selectedGame !== "All") {
-        data = data.filter(score => score.game === selectedGame);
-    }
 
-    return data
-        .sort((a, b) => Number(b.score) - Number(a.score))
-        .slice(0, 5); // Prendi solo i primi 5 risultati
+        console.error("Errore nel recupero della leaderboard:", response.message);
+        return [];
 
     } catch (error) {
         console.error("Errore nella richiesta API:", error);
@@ -82,12 +75,16 @@ async function loadLeaderboard(selectedGame = "All") {
 
         card.classList.add("leaderboard-card");
 
+        const scoreText = selectedGame === "All"
+            ? `Total points — ${player.score} points`
+            : `${player.game} — ${player.score} points`;
+
         card.innerHTML = `
             <span class="rank">#${index + 1}</span>
 
             <div class="player-info">
                 <h3>${player.username}</h3>
-                <p>${player.game} — ${player.score} points</p>
+                <p>${scoreText}</p>
             </div>
         `;
 

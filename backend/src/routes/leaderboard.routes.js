@@ -7,20 +7,7 @@ const allowedGames = ["Memory", "Sudoku", "Tic Tac Toe", "Snake"];
 
 async function getLeaderboard(req, res, selectedGame = null) {
   try {
-    let query = supabase
-      .from("scores")
-      .select(`
-        id,
-        game,
-        score,
-        created_at,
-        users (
-          username
-        )
-      `)
-      .order("score", { ascending: false })
-      .limit(10);
-
+    // Se il filtro è diverso da All/null, controllo che il gioco sia valido
     if (selectedGame) {
       if (!allowedGames.includes(selectedGame)) {
         return res.status(400).json({
@@ -28,7 +15,24 @@ async function getLeaderboard(req, res, selectedGame = null) {
           message: "Gioco non valido"
         });
       }
+    }
 
+    // Prendo i punteggi dal database
+    let query = supabase
+      .from("scores")
+      .select(`
+        id,
+        user_id,
+        game,
+        score,
+        created_at,
+        users (
+          username
+        )
+      `);
+
+    // Se è stato scelto un gioco, prendo solo i punteggi di quel gioco
+    if (selectedGame) {
       query = query.eq("game", selectedGame);
     }
 
@@ -41,18 +45,36 @@ async function getLeaderboard(req, res, selectedGame = null) {
       });
     }
 
-    const leaderboard = (data || []).map((item) => ({
-      id: item.id,
-      username: item.users ? item.users.username : "Utente",
-      game: item.game,
-      score: item.score,
-      date: item.created_at
-    }));
+    const totalsByUser = {};
+
+    // Sommo i punteggi per utente
+    (data || []).forEach((item) => {
+      const userId = item.user_id;
+      const username = item.users ? item.users.username : "Utente";
+      const points = Number(item.score) || 0;
+
+      if (!totalsByUser[userId]) {
+        totalsByUser[userId] = {
+          user_id: userId,
+          username: username,
+          game: selectedGame || "All",
+          score: 0
+        };
+      }
+
+      totalsByUser[userId].score += points;
+    });
+
+    // Trasformo l'oggetto in array, ordino dal totale più alto e prendo i primi 10
+    const leaderboard = Object.values(totalsByUser)
+      .sort((a, b) => Number(b.score) - Number(a.score))
+      .slice(0, 10);
 
     return res.json({
       success: true,
       leaderboard: leaderboard
     });
+
   } catch (error) {
     return res.status(500).json({
       success: false,
